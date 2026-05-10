@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Postdoc Application — DSAI Lab for Health</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --y: #FAB500;
+  --k: #2D2A26;
+  --yl: #FFF8E0;
+  --ylm: #FEF3CC;
+  --g1: #F4F4F2;
+  --g5: #6B6B6B;
+  --g3: #C8C8C8;
+  --white: #FFFFFF;
+  --serif: 'DM Serif Display', Georgia, serif;
+  --sans: 'DM Sans', system-ui, sans-serif;
+  --radius: 10px;
+  --max: 720px;
+  --shadow: 0 4px 24px rgba(45,42,38,0.08);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: var(--sans);
+  background: var(--g1);
+  color: var(--k);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+/* ── HEADER ── */
+.site-header {
+  background: var(--k);
+  padding: 1rem 2rem;
+  position: sticky; top: 0; z-index: 100;
+  border-bottom: 3px solid var(--y);
+}
+.site-header-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  display: flex; align-items: center; gap: 12px;
+}
+.header-logo {
+  display: flex; align-items: center; gap: 10px;
+  text-decoration: none;
+}
+.header-icon svg { display: block; }
+.header-text { }
+.header-name { font-size: 13px; font-weight: 600; color: var(--white); letter-spacing: -0.01em; }
+.header-school { font-size: 11px; color: rgba(255,255,255,0.55); }
+.header-badge {
+  margin-left: auto;
+  background: var(--y); color: var(--k);
+  font-size: 11px; font-weight: 700;
+  padding: 4px 12px; border-radius: 20px;
+  letter-spacing: 0.03em;
+}
+
+/* ── HERO ── */
+.form-hero {
+  background: var(--k);
+  padding: 3rem 2rem 2.5rem;
+  border-bottom: 1px solid rgba(250,181,0,0.2);
+}
+.form-hero-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+}
+.form-type-pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(250,181,0,0.15);
+  border: 1px solid rgba(250,181,0,0.35);
+  border-radius: 20px; padding: 4px 14px;
+  font-size: 11px; font-weight: 600; color: var(--y);
+  letter-spacing: 0.06em; text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+.form-hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  color: var(--white); font-weight: 400;
+  line-height: 1.15; margin-bottom: 0.75rem;
+}
+.form-hero h1 em { font-style: italic; color: var(--y); }
+.form-hero p {
+  font-size: 0.95rem; color: rgba(255,255,255,0.65);
+  max-width: 560px; margin-bottom: 1.5rem;
+}
+.deadline-strip {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(250,181,0,0.2);
+  border: 1px solid rgba(250,181,0,0.4);
+  border-radius: 8px; padding: 8px 16px;
+  font-size: 13px; font-weight: 600; color: var(--y);
+}
+
+/* ── PROGRESS ── */
+.progress-bar-wrap {
+  background: var(--k);
+  padding: 0 2rem 1.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.progress-bar-inner {
+  max-width: var(--max); margin: 0 auto;
+}
+.progress-steps {
+  display: flex; gap: 0; align-items: center;
+}
+.prog-step {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 4px; flex: 1; position: relative;
+}
+.prog-step::after {
+  content: '';
+  position: absolute; top: 13px; left: 50%; right: -50%;
+  height: 2px; background: rgba(255,255,255,0.1); z-index: 0;
+}
+.prog-step:last-child::after { display: none; }
+.prog-dot {
+  width: 26px; height: 26px; border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  border: 2px solid rgba(255,255,255,0.15);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.3);
+  position: relative; z-index: 1; transition: all .3s;
+}
+.prog-step.active .prog-dot {
+  background: var(--y); border-color: var(--y); color: var(--k);
+}
+.prog-step.done .prog-dot {
+  background: rgba(250,181,0,0.3); border-color: var(--y); color: var(--y);
+}
+.prog-label {
+  font-size: 9px; font-weight: 500; color: rgba(255,255,255,0.3);
+  text-align: center; line-height: 1.2;
+  transition: color .3s;
+}
+.prog-step.active .prog-label { color: var(--y); }
+.prog-step.done .prog-label { color: rgba(250,181,0,0.6); }
+
+/* ── FORM LAYOUT ── */
+.form-body {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.form-section {
+  display: none;
+  animation: fadeIn .3s ease;
+}
+.form-section.active { display: block; }
+@keyframes fadeIn { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
+
+.section-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+}
+.section-header {
+  display: flex; align-items: flex-start; gap: 12px;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--g1);
+}
+.section-num {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--yl); border: 2px solid var(--y);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; font-weight: 700; color: var(--k);
+  flex-shrink: 0;
+}
+.section-title { font-size: 17px; font-weight: 600; color: var(--k); margin-bottom: 2px; }
+.section-sub { font-size: 13px; color: var(--g5); }
+
+/* ── FIELDS ── */
+.field { margin-bottom: 1.25rem; }
+.field:last-child { margin-bottom: 0; }
+.field-label {
+  display: block;
+  font-size: 13.5px; font-weight: 600; color: var(--k);
+  margin-bottom: 5px;
+}
+.field-label .req { color: #c0392b; margin-left: 2px; }
+.field-hint {
+  font-size: 12px; color: var(--g5);
+  margin-bottom: 6px; line-height: 1.5;
+}
+input[type=text], input[type=email], input[type=url],
+select, textarea {
+  width: 100%;
+  font-family: var(--sans);
+  font-size: 14px;
+  color: var(--k);
+  background: var(--white);
+  border: 1.5px solid var(--g3);
+  border-radius: 8px;
+  padding: 10px 14px;
+  transition: border-color .15s, box-shadow .15s;
+  outline: none;
+  -webkit-appearance: none;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: var(--y);
+  box-shadow: 0 0 0 3px rgba(250,181,0,0.15);
+}
+input.error, select.error, textarea.error {
+  border-color: #e74c3c;
+  box-shadow: 0 0 0 3px rgba(231,76,60,0.1);
+}
+textarea { min-height: 120px; resize: vertical; line-height: 1.6; }
+select { cursor: pointer; }
+.field-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+/* ── CHECKBOXES / RADIO ── */
+.check-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px; margin-top: 4px;
+}
+.check-item {
+  display: flex; align-items: flex-start; gap: 8px;
+  background: var(--g1);
+  border: 1.5px solid transparent;
+  border-radius: 8px; padding: 8px 10px;
+  cursor: pointer; transition: all .15s;
+}
+.check-item:hover { border-color: var(--y); background: var(--yl); }
+.check-item input[type=checkbox],
+.check-item input[type=radio] {
+  width: 16px; height: 16px; margin-top: 1px;
+  flex-shrink: 0; cursor: pointer;
+  accent-color: var(--y);
+  border: none; padding: 0;
+  box-shadow: none;
+}
+.check-item input:focus { box-shadow: none; border: none; }
+.check-label { font-size: 13px; color: var(--k); line-height: 1.4; }
+.check-sub { font-size: 11px; color: var(--g5); margin-top: 1px; }
+
+/* Stream cards */
+.stream-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 4px;
+}
+.stream-item {
+  display: flex; align-items: flex-start; gap: 8px;
+  border: 1.5px solid var(--g3);
+  border-radius: 8px; padding: 9px 11px;
+  cursor: pointer; transition: all .15s;
+  background: var(--white);
+  border-left: 3px solid var(--y);
+}
+.stream-item:hover { border-color: var(--y); background: var(--yl); }
+.stream-item input[type=checkbox] {
+  width: 16px; height: 16px; margin-top: 2px;
+  flex-shrink: 0; cursor: pointer;
+  accent-color: var(--y);
+  border: none; padding: 0; box-shadow: none;
+}
+.stream-item input:focus { box-shadow: none; }
+.stream-name { font-size: 12.5px; font-weight: 600; color: var(--k); }
+.stream-title-text { font-size: 11px; color: var(--g5); margin-top: 1px; line-height: 1.3; }
+
+/* ── NAV BUTTONS ── */
+.form-nav {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-top: 1.5rem; gap: 1rem;
+}
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 24px; border-radius: 8px;
+  font-family: var(--sans); font-size: 14px; font-weight: 600;
+  cursor: pointer; border: none; transition: all .15s;
+  text-decoration: none;
+}
+.btn-primary { background: var(--y); color: var(--k); }
+.btn-primary:hover { background: #e0a200; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(250,181,0,0.35); }
+.btn-secondary { background: var(--g1); color: var(--k); border: 1.5px solid var(--g3); }
+.btn-secondary:hover { background: var(--white); border-color: var(--k); }
+.btn-submit { background: var(--k); color: var(--y); }
+.btn-submit:hover { background: #1a1816; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(45,42,38,0.3); }
+
+/* ── SUCCESS ── */
+.success-card {
+  display: none;
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 3rem 2rem;
+  text-align: center;
+}
+.success-card.active { display: block; }
+.success-icon { font-size: 3rem; margin-bottom: 1rem; }
+.success-title {
+  font-family: var(--serif);
+  font-size: 1.8rem; color: var(--k);
+  margin-bottom: 0.75rem;
+}
+.success-body { font-size: 14px; color: var(--g5); line-height: 1.7; max-width: 440px; margin: 0 auto 1.5rem; }
+
+/* ── COUNTER ── */
+.char-counter { font-size: 11px; color: var(--g5); text-align: right; margin-top: 3px; }
+.char-counter.warn { color: #e67e22; }
+.char-counter.over { color: #e74c3c; }
+
+/* ── ERROR MSG ── */
+.field-error { font-size: 12px; color: #e74c3c; margin-top: 4px; display: none; }
+.field-error.show { display: block; }
+
+/* ── RESPONSIVE ── */
+@media(max-width:600px) {
+  .field-grid, .check-grid, .stream-grid { grid-template-columns: 1fr; }
+  .form-hero { padding: 2rem 1.25rem 2rem; }
+  .form-body { padding: 1.25rem; }
+  .section-card { padding: 1.25rem; }
+  .progress-steps { gap: 0; }
+  .prog-label { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="index.html" class="header-logo">
+      <div class="header-icon">
+        <svg width="32" height="32" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs><clipPath id="hc"><path d="M4,4 L4,68 L34,68 Q68,68 68,36 Q68,4 34,4 Z"/></clipPath></defs>
+          <path d="M4,4 L4,68 L34,68 Q68,68 68,36 Q68,4 34,4 Z" fill="rgba(255,255,255,0.15)"/>
+          <path d="M14,14 L14,58 L34,58 Q56,58 56,36 Q56,14 34,14 Z" fill="rgba(255,255,255,0.08)"/>
+          <polygon points="36,17 50,17 57,29 50,41 36,41 29,29" fill="#FAB500" clip-path="url(#hc)"/>
+          <polyline points="30,29 35,29 38.5,19 42,38 45.5,24 49,29 54,29 57,29" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" clip-path="url(#hc)"/>
+        </svg>
+      </div>
+      <div class="header-text">
+        <div class="header-name">DSAI Lab for Health</div>
+        <div class="header-school">NOVA Medical School</div>
+      </div>
+    </a>
+    <div class="header-badge">Postdoc Application</div>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="form-hero">
+  <div class="form-hero-inner">
+    <div class="form-type-pill">🔬 Postdoctoral Research Position</div>
+    <h1>Postdoctoral Expression of Interest<br><em>2026 Cohort</em></h1>
+    <p>Complete all sections of this form to express your interest in joining the DSAI Lab for Health as a Postdoctoral researcher. We will respond within 3 weeks of submission.</p>
+    <div class="deadline-strip">⏳ Application deadline: 15 July 2026</div>
+  </div>
+</div>
+
+<!-- PROGRESS -->
+<div class="progress-bar-wrap">
+  <div class="progress-bar-inner">
+    <div class="progress-steps" id="progress-steps">
+      <div class="prog-step active" data-step="1"><div class="prog-dot">1</div><div class="prog-label">Personal</div></div>
+      <div class="prog-step" data-step="2"><div class="prog-dot">2</div><div class="prog-label">Background</div></div>
+      <div class="prog-step" data-step="3"><div class="prog-dot">3</div><div class="prog-label">Publications</div></div>
+      <div class="prog-step" data-step="4"><div class="prog-dot">4</div><div class="prog-label">Streams</div></div>
+      <div class="prog-step" data-step="5"><div class="prog-dot">5</div><div class="prog-label">MSCA</div></div>
+      <div class="prog-step" data-step="6"><div class="prog-dot">6</div><div class="prog-label">Vision</div></div>
+      <div class="prog-step" data-step="7"><div class="prog-dot">7</div><div class="prog-label">Availability</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- FORM -->
+<div class="form-body">
+<form id="application-form" novalidate>
+  <!-- WEB3FORMS hidden fields -->
+  <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+  <input type="hidden" name="subject" value="DSAI Lab — Postdoctoral Expression of Interest 2026">
+  <input type="hidden" name="from_name" value="DSAI Lab Application Form">
+  <input type="hidden" name="redirect" value="">
+  <input type="checkbox" name="botcheck" style="display:none;">
+
+  <!-- ── SECTION 1: PERSONAL ── -->
+  <div class="form-section active" id="section-1">
+    <div class="section-card">
+      <div class="section-header">
+        <div class="section-num">1</div>
+        <div><div class="section-title">Personal Information</div><div class="section-sub">Your contact details and basic personal information</div></div>
+      </div>
+
+      <div class="field-grid">
+        <div class="field">
+          <label class="field-label" for="first_name">First name <span class="req">*</span></label>
+          <input type="text" id="first_name" name="first_name" placeholder="e.g. Maria" required>
+          <div class="field-error" id="err-first_name">Please enter your first name.</div>
+        </div>
+        <div class="field">
+          <label class="field-label" for="last_name">Last name <span class="req">*</span></label>
+          <input type="text" id="last_name" name="last_name" placeholder="e.g. Silva" required>
+          <div class="field-error" id="err-last_name">Please enter your last name.</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="email">Email address <span class="req">*</span></label>
+        <input type="email" id="email" name="email" placeholder="your@email.com" required>
+        <div class="field-error" id="err-email">Please enter a valid email address.</div>
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="institution">Current institution / affiliation <span class="req">*</span></label>
+        <input type="text" id="institution" name="institution" placeholder="e.g. University of Lisbon" required>
+        <div class="field-error" id="err-institution">Please enter your current institution.</div>
+      </div>
+
+      <div class="field-grid">
+        <div class="field">
+          <label class="field-label" for="country">Country of residence <span class="req">*</span></label>
+          <input type="text" id="country" name="country" placeholder="e.g. Portugal" required>
+          <div class="field-error" id="err-country">Please enter your country.</div>
+        </div>
+        <div class="field">
+          <label class="field-label" for="nationality">Nationality <span class="req">*</span></label>
+          <div class="field-hint">Relevant for FCT / Google Fellowship eligibility</div>
+          <input type="text" id="nationality" name="nationality" placeholder="e.g. Portuguese" required>
+          <div class="field-error" id="err-nationality">Please enter your nationality.</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="linkedin">LinkedIn profile URL</label>
+        <input type="url" id="linkedin" name="linkedin" placeholder="https://linkedin.com/in/yourprofile">
+      </div>
+    </div>
+    <div class="form-nav">
+      <span></span>
+      <button type="button" class="btn btn-primary" onclick="nextSection(1)">Next: Academic Background →</button>
+    </div>
+  </div>
+
+  <!-- ── SECTION 2: BACKGROUND (POSTDOC) ── -->
+  <div class="form-section" id="section-2">
+    <div class="section-card">
+      <div class="section-header">
+        <div class="section-num">2</div>
+        <div><div class="section-title">Academic &amp; Professional Background</div><div class="section-sub">Your PhD and current position</div></div>
+      </div>
+
+      <div class="field-grid">
+        <div class="field">
+          <label class="field-label" for="phd_institution">PhD institution <span class="req">*</span></label>
+          <input type="text" id="phd_institution" name="phd_institution" placeholder="e.g. University of Amsterdam" required>
+          <div class="field-error" id="err-phd_institution">Please enter your PhD institution.</div>
+        </div>
+        <div class="field">
+          <label class="field-label" for="phd_year">Year of PhD award <span class="req">*</span></label>
+          <input type="text" id="phd_year" name="phd_year" placeholder="e.g. 2022" required>
+          <div class="field-error" id="err-phd_year">Please enter the year.</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="phd_thesis">PhD thesis title</label>
+        <input type="text" id="phd_thesis" name="phd_thesis" placeholder="Title of your doctoral thesis">
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="field_study">Field of study / discipline <span class="req">*</span></label>
+        <input type="text" id="field_study" name="field_study" placeholder="e.g. Machine Learning, Biostatistics, Clinical Informatics..." required>
+        <div class="field-error" id="err-field_study">Please enter your field of study.</div>
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="current_position">Current or most recent position <span class="req">*</span></label>
+        <input type="text" id="current_position" name="current_position" placeholder="e.g. Postdoctoral researcher at X / Research scientist at Y" required>
+        <div class="field-error" id="err-current_position">Please enter your current position.</div>
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="postdoc_years">Years of postdoctoral / research experience since PhD <span class="req">*</span></label>
+        <select id="postdoc_years" name="postdoc_years" required>
+          <option value="">Select...</option>
+          <option>Less than 1 year</option>
+          <option>1–2 years</option>
+          <option>2–4 years</option>
+          <option>More than 4 years</option>
+        </select>
+        <div class="field-error" id="err-postdoc_years">Please select an option.</div>
+      </div>
+
+      <div class="field">
+        <label class="field-label">Programming languages / tools (select all that apply)</label>
+        <div class="check-grid">
+          <label class="check-item"><input type="checkbox" name="skills" value="Python"><span class="check-label">Python</span></label>
+          <label class="check-item"><input type="checkbox" name="skills" value="R"><span class="check-label">R</span></label>
+          <label class="check-item"><input type="checkbox" name="skills" value="MATLAB"><span class="check-label">MATLAB</span></label>
+          <label class="check-item"><input type="checkbox" name="skills" value="PyTorch/TensorFlow/JAX"><span class="check-label">PyTorch / TensorFlow / JAX</span></label>
+          <label class="check-item"><input type="checkbox" name="skills" value="Stan/JAGS"><span class="check-label">Stan / JAGS (Bayesian)</span></label>
+          <label class="check-item"><input type="checkbox" name="skills" value="SQL"><span class="check-label">SQL</span></label>
+          <label class="check-item"><input type="checkbox" name="skills" value="Julia"><span class="check-label">Julia</span></label>
+          <label class="check-item"><input type="checkbox" name="skills" value="Other"><span class="check-label">Other</span></label>
+        </div>
+      </div>
+    </div>
+    <div class="form-nav">
+      <button type="button" class="btn btn-secondary" onclick="prevSection(2)">← Back</button>
+      <button type="button" class="btn btn-primary" onclick="nextSection(2)">Next: Publications →</button>
+    </div>
+  </div>
+
+  <!-- ── SECTION 3: EXPERIENCE ── -->
+  <div class="form-section" id="section-3">
+    <div class="section-card">
+      <div class="section-header">
+        <div class="section-num">3</div>
+        <div><div class="section-title">Research Experience &amp; Publications</div><div class="section-sub">Your research track record and key outputs</div></div>
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="research_exp">Summary of research experience and key contributions <span class="req">*</span></label>
+        <div class="field-hint">Up to 400 words. Include your main research lines, methodological strengths, and any clinical or translational collaborations.</div>
+        <textarea id="research_exp" name="research_exp" placeholder="Describe your main research lines, strengths, and key contributions..." required maxlength="2800"></textarea>
+        <div class="char-counter" id="cnt-research_exp">0 / 400 words</div>
+        <div class="field-error" id="err-research_exp">Please describe your research experience.</div>
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="publications">Up to 5 key publications (DOIs or full citations) <span class="req">*</span></label>
+        <div class="field-hint">List your most representative publications. At least one required.</div>
+        <textarea id="publications" name="publications" placeholder="1. doi:10.1000/xyz123&#10;2. Author et al. (2023)..." required style="min-height:120px;"></textarea>
+        <div class="field-error" id="err-publications">Please list at least one publication.</div>
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="profile_url">Google Scholar / ORCID / ResearchGate profile URL</label>
+        <input type="url" id="profile_url" name="profile_url" placeholder="https://scholar.google.com/citations?user=...">
+      </div>
+    </div>
+    <div class="form-nav">
+      <button type="button" class="btn btn-secondary" onclick="prevSection(3)">← Back</button>
+      <button type="button" class="btn btn-primary" onclick="nextSection(3)">Next: Research Streams →</button>
+    </div>
+  </div>
+
+  <!-- ── SECTION 4: STREAMS ── -->
+  <div class="form-section" id="section-4">
+    <div class="section-card">
+      <div class="section-header">
+        <div class="section-num">4</div>
+        <div><div class="section-title">Postdoctoral Research Stream Selection</div><div class="section-sub">Select up to 3 streams of interest</div></div>
+      </div>
+
+      <div class="field">
+        <label class="field-label">Research streams of interest <span class="req">*</span></label>
+        <div class="field-hint">Select up to 3. You will rank your top choice below.</div>
+        <div class="stream-grid" id="stream-checkboxes">
+          <label class="stream-item"><input type="checkbox" name="streams" value="HUMAN-XAI"><div><div class="stream-name">HUMAN-XAI</div><div class="stream-title-text">Human-centred XAI design</div></div></label>
+          <label class="stream-item"><input type="checkbox" name="streams" value="FED-XAI"><div><div class="stream-name">FED-XAI</div><div class="stream-title-text">Federated, privacy-preserving XAI</div></div></label>
+          <label class="stream-item"><input type="checkbox" name="streams" value="CAUSE-DIGI"><div><div class="stream-name">CAUSE-DIGI</div><div class="stream-title-text">Causal evaluation of digital technology</div></div></label>
+          <label class="stream-item"><input type="checkbox" name="streams" value="VAL2USE-AI"><div><div class="stream-name">VAL2USE-AI</div><div class="stream-title-text">Adoption pathways for AI as medical device</div></div></label>
+          <label class="stream-item"><input type="checkbox" name="streams" value="ROBUST-Twin"><div><div class="stream-name">ROBUST-Twin</div><div class="stream-title-text">Multicentre digital twin validation</div></div></label>
+          <label class="stream-item"><input type="checkbox" name="streams" value="PEDIA-PASS"><div><div class="stream-name">PEDIA-PASS</div><div class="stream-title-text">Continuous Fontan patient surveillance</div></div></label>
+          <label class="stream-item"><input type="checkbox" name="streams" value="RECOVER-SYNCOPE"><div><div class="stream-name">RECOVER-SYNCOPE</div><div class="stream-title-text">Syncope decision-support tool</div></div></label>
+          <label class="stream-item"><input type="checkbox" name="streams" value="CHILD-RAG"><div><div class="stream-name">CHILD-RAG</div><div class="stream-title-text">Conversational health literacy, paediatric CHD</div></div></label>
+          <label class="stream-item"><input type="checkbox" name="streams" value="TWIN-OMICS"><div><div class="stream-name">TWIN-OMICS</div><div class="stream-title-text">Genotype-to-wearable personalised risk</div></div></label>
+          <label class="stream-item"><input type="checkbox" name="streams" value="SurvTransport"><div><div class="stream-name">SurvTransport</div><div class="stream-title-text">Semiparametric Efficient Estimation for Causal Transpor...</div></div></label>
+          <label class="stream-item"><input type="checkbox" name="streams" value="HighDim-GLMM"><div><div class="stream-name">HighDim-GLMM</div><div class="stream-title-text">Debiased Inference for High-Dimensional Generalised Lin...</div></div></label>
+          <label class="stream-item"><input type="checkbox" name="streams" value="SynthStat"><div><div class="stream-name">SynthStat</div><div class="stream-title-text">Statistical Properties of Synthetic Health Data: Estima...</div></div></label>
+          <label class="stream-item"><input type="checkbox" name="streams" value="MultiLat-SEM"><div><div class="stream-name">MultiLat-SEM</div><div class="stream-title-text">Unified Latent Factor Models for Multimodal Longitudina...</div></div></label>
+          <label class="stream-item"><input type="checkbox" name="streams" value="CalibDrift"><div><div class="stream-name">CalibDrift</div><div class="stream-title-text">Prospective Calibration Monitoring and Recalibration of...</div></div></label>
+        </div>
+        <div class="field-error" id="err-streams">Please select at least one stream.</div>
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="top_choice">Top choice and motivation <span class="req">*</span></label>
+        <div class="field-hint">Up to 200 words. Why this stream? How does it connect to your background?</div>
+        <textarea id="top_choice" name="top_choice" placeholder="Name your top-ranked stream and explain your motivation..." required maxlength="1400"></textarea>
+        <div class="char-counter" id="cnt-top_choice">0 / 200 words</div>
+        <div class="field-error" id="err-top_choice">Please describe your top choice and motivation.</div>
+      </div>
+    </div>
+    <div class="form-nav">
+      <button type="button" class="btn btn-secondary" onclick="prevSection(4)">← Back</button>
+      <button type="button" class="btn btn-primary" onclick="nextSection(4)">Next: Funding Target →</button>
+    </div>
+  </div>
+
+  <!-- ── SECTION 5: FUNDING ── -->
+  <div class="form-section" id="section-5">
+    <div class="section-card">
+      <div class="section-header">
+        <div class="section-num">5</div>
+        <div><div class="section-title">Funding Target &amp; MSCA Eligibility</div><div class="section-sub">Which programme(s) are you targeting?</div></div>
+      </div>
+
+      <div class="field">
+        <label class="field-label">Target funding programme(s) <span class="req">*</span></label>
+        <div class="check-grid">
+          <label class="check-item"><input type="checkbox" name="funding" value="MSCA-PF European Fellowship"><div><span class="check-label">MSCA-PF European Fellowship (EF)</span><div class="check-sub">2026 call now open</div></div></label>
+          <label class="check-item"><input type="checkbox" name="funding" value="MSCA-PF Global Fellowship"><div><span class="check-label">MSCA-PF Global Fellowship (GF)</span><div class="check-sub">2026 call now open</div></div></label>
+          <label class="check-item"><input type="checkbox" name="funding" value="FCT DL57/CEEC"><div><span class="check-label">FCT Individual Grants (DL57 / CEEC)</span><div class="check-sub">Next call exp. March/April 2027</div></div></label>
+          <label class="check-item"><input type="checkbox" name="funding" value="Other"><div><span class="check-label">Other (specify below)</span></div></label>
+          <label class="check-item"><input type="checkbox" name="funding" value="Not sure"><div><span class="check-label">Not sure — would like guidance</span></div></label>
+        </div>
+        <div class="field-error" id="err-funding">Please select at least one option.</div>
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="funding_other">If "Other", please specify</label>
+        <input type="text" id="funding_other" name="funding_other" placeholder="e.g. ERC Starting Grant, Wellcome Trust...">
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="msca_eligibility">MSCA eligibility</label>
+        <div class="field-hint">MSCA-PF requires you have not resided/worked in Portugal for more than 12 months in the 3 years prior to the call deadline.</div>
+        <select id="msca_eligibility" name="msca_eligibility">
+          <option value="">Select...</option>
+          <option>I meet the mobility rule for European Fellowship (EF)</option>
+          <option>I meet the criteria for Global Fellowship (GF)</option>
+          <option>I am not sure — I would like guidance</option>
+          <option>I do not meet MSCA mobility requirements</option>
+          <option>Not applicable (targeting other programme)</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="prev_application">Have you previously submitted an MSCA application?</label>
+        <select id="prev_application" name="prev_application">
+          <option value="">Select...</option>
+          <option>No</option>
+          <option>Yes — unsuccessful</option>
+          <option>Yes — pending</option>
+          <option>Yes — successful</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-nav">
+      <button type="button" class="btn btn-secondary" onclick="prevSection(5)">← Back</button>
+      <button type="button" class="btn btn-primary" onclick="nextSection(5)">Next: Supporting Statement →</button>
+    </div>
+  </div>
+
+  <!-- ── SECTION 6: STATEMENT ── -->
+  <div class="form-section" id="section-6">
+    <div class="section-card">
+      <div class="section-header">
+        <div class="section-num">6</div>
+        <div><div class="section-title">Research Vision &amp; Supporting Documents</div><div class="section-sub">Your independent research vision and CV</div></div>
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="motivation">Research vision statement <span class="req">*</span></label>
+        <div class="field-hint">Up to 600 words. Your independent research vision, fit with the DSAI Lab, what you would bring to the team, and your longer-term career goals.</div>
+        <textarea id="motivation" name="motivation" placeholder="Describe your motivation, career goals, and expected contribution..." required maxlength="4200" style="min-height:180px;"></textarea>
+        <div class="char-counter" id="cnt-motivation">0 / 600 words</div>
+        <div class="field-error" id="err-motivation">Please write your motivation statement.</div>
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="cv_link">Link to CV / résumé <span class="req">*</span></label>
+        <div class="field-hint">Share a link to your CV on Google Drive, Dropbox, or similar (set to "anyone with the link can view"). PDF preferred.</div>
+        <input type="url" id="cv_link" name="cv_link" placeholder="https://drive.google.com/file/d/..." required>
+        <div class="field-error" id="err-cv_link">Please provide a link to your CV.</div>
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="writing_sample">Link to most representative paper or preprint <span class="req">*</span></label>
+        <div class="field-hint">Required. URL to PDF, journal page, or preprint server (arXiv, bioRxiv, etc.).</div>
+        <input type="url" id="writing_sample" name="writing_sample" placeholder="https://..." required>
+        <div class="field-error" id="err-writing_sample">Please provide a link to a representative paper.</div>
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="referee">Name and contact of one academic referee</label>
+        <div class="field-hint">Optional at this stage. References may be requested for shortlisted candidates.</div>
+        <input type="text" id="referee" name="referee" placeholder="Name, institution, email">
+      </div>
+    </div>
+    <div class="form-nav">
+      <button type="button" class="btn btn-secondary" onclick="prevSection(6)">← Back</button>
+      <button type="button" class="btn btn-primary" onclick="nextSection(6)">Next: Availability →</button>
+    </div>
+  </div>
+
+  <!-- ── SECTION 7: AVAILABILITY ── -->
+  <div class="form-section" id="section-7">
+    <div class="section-card">
+      <div class="section-header">
+        <div class="section-num">7</div>
+        <div><div class="section-title">Availability &amp; Final Details</div><div class="section-sub">Start date, location, and how you found us</div></div>
+      </div>
+
+      <div class="field-grid">
+        <div class="field">
+          <label class="field-label" for="start_date">Earliest available start date <span class="req">*</span></label>
+          <input type="text" id="start_date" name="start_date" placeholder="e.g. September 2026" required>
+          <div class="field-error" id="err-start_date">Please indicate your start date.</div>
+        </div>
+        <div class="field">
+          <label class="field-label" for="lisbon">Able to be based in Lisbon? <span class="req">*</span></label>
+          <select id="lisbon" name="lisbon" required>
+            <option value="">Select...</option>
+            <option>Yes, full time</option>
+            <option>Yes, with some remote flexibility</option>
+            <option>Requires discussion</option>
+            <option>No</option>
+          </select>
+          <div class="field-error" id="err-lisbon">Please select an option.</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="how_found">How did you hear about the DSAI Lab?</label>
+        <select id="how_found" name="how_found">
+          <option value="">Select...</option>
+          <option>LinkedIn</option>
+          <option>NOVA Medical School website</option>
+          <option>Supervisor / colleague recommendation</option>
+          <option>ResearchGate</option>
+          <option>Conference / event</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="anything_else">Anything else you would like us to know?</label>
+        <textarea id="anything_else" name="anything_else" placeholder="Optional additional information..." style="min-height:80px;"></textarea>
+      </div>
+    </div>
+
+    <!-- CONSENT -->
+    <div class="section-card" style="background:var(--yl); border:1.5px solid var(--y);">
+      <div class="field">
+        <label class="check-item" style="background:transparent; border:none; padding:0;">
+          <input type="checkbox" id="consent" name="consent" value="yes" required>
+          <span class="check-label">I confirm that the information provided is accurate and that I consent to my data being used solely for evaluating my application to the DSAI Lab for Health, NOVA Medical School. <span class="req">*</span></span>
+        </label>
+        <div class="field-error" id="err-consent">You must accept the consent statement to submit.</div>
+      </div>
+    </div>
+
+    <div class="form-nav">
+      <button type="button" class="btn btn-secondary" onclick="prevSection(7)">← Back</button>
+      <button type="submit" class="btn btn-submit" id="submit-btn">
+        Submit application ✓
+      </button>
+    </div>
+  </div>
+
+</form>
+
+<!-- SUCCESS -->
+<div class="success-card" id="success-card">
+  <div class="success-icon">🎉</div>
+  <h2 class="success-title">Application received!</h2>
+  <p class="success-body">Thank you for your interest in joining the DSAI Lab for Health. We have received your Postdoctoral expression of interest and will review it carefully. You will hear from us within 3 weeks of the deadline (15 July 2026).</p>
+  <a href="index.html" class="btn btn-primary">← Return to lab website</a>
+</div>
+
+</div><!-- /form-body -->
+
+<script>
+let currentSection = 1;
+const totalSections = 7;
+
+// ── NAVIGATION ───────────────────────────────────────────────────────────────
+function nextSection(from) {
+  if (!validateSection(from)) return;
+  goTo(from + 1);
+}
+function prevSection(from) {
+  goTo(from - 1);
+}
+function goTo(n) {
+  document.getElementById('section-' + currentSection).classList.remove('active');
+  currentSection = n;
+  document.getElementById('section-' + n).classList.add('active');
+  updateProgress();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+function updateProgress() {
+  document.querySelectorAll('.prog-step').forEach(s => {
+    const sn = parseInt(s.dataset.step);
+    s.classList.remove('active','done');
+    if (sn === currentSection) s.classList.add('active');
+    else if (sn < currentSection) s.classList.add('done');
+  });
+}
+
+// ── VALIDATION ───────────────────────────────────────────────────────────────
+function validateSection(n) {
+  let valid = true;
+  const sec = document.getElementById('section-' + n);
+
+  // Clear errors
+  sec.querySelectorAll('.field-error').forEach(e => e.classList.remove('show'));
+  sec.querySelectorAll('input,select,textarea').forEach(el => el.classList.remove('error'));
+
+  // Required text/email/url/select
+  sec.querySelectorAll('[required]').forEach(el => {
+    if (el.type === 'checkbox') {
+      if (!el.checked) { showErr(el.id || 'consent'); setErr(el); valid = false; }
+    } else if (!el.value.trim()) {
+      showErr('err-' + el.id); setErr(el); valid = false;
+    } else if (el.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value)) {
+      showErr('err-' + el.id); setErr(el); valid = false;
+    }
+  });
+
+  // Streams (at least 1 checked)
+  if (n === 4) {
+    const checked = sec.querySelectorAll('input[name=streams]:checked');
+    if (checked.length === 0) { showErr('err-streams'); valid = false; }
+    if (checked.length > 3) {
+      alert('Please select a maximum of 3 research streams.');
+      valid = false;
+    }
+  }
+
+  // Funding (at least 1 checked)
+  if (n === 5) {
+    const checked = sec.querySelectorAll('input[name=funding]:checked');
+    if (checked.length === 0) { showErr('err-funding'); valid = false; }
+  }
+
+  if (!valid) {
+    const firstErr = sec.querySelector('.error, .field-error.show');
+    if (firstErr) firstErr.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+  return valid;
+}
+
+function showErr(id) {
+  const el = document.getElementById(id);
+  if (el) el.classList.add('show');
+}
+function setErr(el) { el.classList.add('error'); }
+
+// ── WORD COUNTER ─────────────────────────────────────────────────────────────
+function wordCount(text) {
+  return text.trim().split(/\s+/).filter(w => w.length > 0).length;
+}
+function setupCounter(textareaId, counterId, limit) {
+  const ta = document.getElementById(textareaId);
+  const ct = document.getElementById(counterId);
+  if (!ta || !ct) return;
+  ta.addEventListener('input', () => {
+    const wc = wordCount(ta.value);
+    ct.textContent = wc + ' / ' + limit + ' words';
+    ct.className = 'char-counter' + (wc > limit ? ' over' : wc > limit * 0.9 ? ' warn' : '');
+  });
+}
+setupCounter('research_exp', 'cnt-research_exp', 300);
+setupCounter('top_choice', 'cnt-top_choice', 200);
+setupCounter('motivation', 'cnt-motivation', 600);
+
+// ── STREAM LIMIT (max 3) ─────────────────────────────────────────────────────
+document.querySelectorAll('input[name=streams]').forEach(cb => {
+  cb.addEventListener('change', () => {
+    const checked = document.querySelectorAll('input[name=streams]:checked');
+    if (checked.length > 3) { cb.checked = false; }
+  });
+});
+
+// ── FORM SUBMIT ───────────────────────────────────────────────────────────────
+document.getElementById('application-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  if (!validateSection(7)) return;
+
+  const btn = document.getElementById('submit-btn');
+  btn.textContent = 'Submitting…';
+  btn.disabled = true;
+
+  const formData = new FormData(this);
+  try {
+    const res = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      body: formData
+    });
+    const data = await res.json();
+    if (data.success) {
+      document.getElementById('section-7').classList.remove('active');
+      document.getElementById('success-card').classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      btn.textContent = 'Submit application ✓';
+      btn.disabled = false;
+      alert('Submission failed. Please try again or email jorge.mendes@nms.unl.pt directly.');
+    }
+  } catch(err) {
+    btn.textContent = 'Submit application ✓';
+    btn.disabled = false;
+    alert('Network error. Please try again or email jorge.mendes@nms.unl.pt directly.');
+  }
+});
+</script>
+</body>
+</html>
