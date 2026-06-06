@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="DSAI Hub for Health — Data Science and Artificial Intelligence Hub for Health at NOVA Medical School, NOVA University Lisbon. Open PhD and Postdoctoral positions for 2026.">
+<meta name="keywords" content="AI health, explainable AI, digital health, cardiac AI, federated learning, PhD positions, postdoc positions, NOVA Medical School, Lisbon, MSCA, FCT">
+<meta property="og:title" content="DSAI Hub for Health — NOVA Medical School">
+<meta property="og:description" content="Open PhD and Postdoctoral research positions in AI for Health. Deadline: 15 July 2026.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://jmm1972.github.io/dsai-lab-health/DSAI_hub_logo.svg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<title>DSAI Hub for Health — NOVA Medical School</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --nms-yellow: #FAB500;
+  --nms-black: #2D2A26;
+  --blue: #2D2A26;
+  --blue-mid: #1a1816;
+  --blue-light: #FEF3CC;
+  --blue-pale: #FFFAEB;
+  --teal: #2D2A26;
+  --teal-mid: #1a1816;
+  --teal-light: #FFF8E0;
+  --teal-pale: #FFFAEB;
+  --amber: #2D2A26;
+  --amber-light: #FEF3CC;
+  --gray-900: #1a1a1a;
+  --gray-700: #3a3a3a;
+  --gray-500: #6b6b6b;
+  --gray-300: #c8c8c8;
+  --gray-100: #f4f4f2;
+  --white: #ffffff;
+  --serif: 'DM Serif Display', Georgia, serif;
+  --sans: 'DM Sans', system-ui, sans-serif;
+  --max: 1100px;
+  --radius: 10px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: var(--sans);
+  color: var(--gray-700);
+  background: var(--white);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── NAV ── */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(27,79,138,0.12);
+  padding: 0 2rem;
+}
+.nav-inner {
+  max-width: var(--max); margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 62px;
+}
+.nav-logo {
+  display: flex; align-items: center; gap: 10px;
+  text-decoration: none;
+}
+.nav-logo-mark {
+  width: 34px; height: 34px; border-radius: 7px;
+  background: var(--nms-black);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif); font-size: 15px; color: white; font-weight: 400;
+}
+.nav-logo-text {
+  font-size: 14px; font-weight: 600; color: var(--nms-black); letter-spacing: -0.01em;
+}
+.nav-logo-sub { font-size: 11px; color: var(--gray-500); font-weight: 400; }
+.nav-links { display: flex; align-items: center; gap: 1.5rem; list-style: none; }
+.nav-links a {
+  font-size: 13.5px; font-weight: 500; color: var(--gray-500);
+  text-decoration: none; transition: color .15s;
+}
+.nav-links a:hover { color: var(--blue); }
+.nav-cta {
+  background: var(--nms-black); color: white !important;
+  padding: 7px 16px; border-radius: 6px; font-size: 13px !important;
+  transition: background .15s !important;
+}
+.nav-cta:hover { background: #e0a200 !important; color: var(--nms-black) !important; }
+
+/* ── HERO ── */
+.hero {
+  background: var(--nms-black);
+  position: relative; overflow: hidden;
+  padding: 6rem 2rem 5rem;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    radial-gradient(ellipse 60% 50% at 80% 50%, rgba(15,110,86,0.25) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 60% at 10% 80%, rgba(255,255,255,0.04) 0%, transparent 50%);
+  pointer-events: none;
+}
+.hero-grid {
+  position: absolute; inset: 0; opacity: 0.04;
+  background-image: linear-gradient(rgba(255,255,255,.5) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.5) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.hero-inner {
+  max-width: var(--max); margin: 0 auto;
+  position: relative; z-index: 1;
+}
+.hero-pill {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 20px; padding: 5px 14px;
+  font-size: 12px; color: rgba(255,255,255,0.85); font-weight: 500;
+  margin-bottom: 1.5rem;
+  animation: fadeUp .6s ease both;
+}
+.pill-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: #4ade80; flex-shrink: 0;
+  box-shadow: 0 0 0 3px rgba(74,222,128,0.3);
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100%{box-shadow:0 0 0 3px rgba(74,222,128,0.3)} 50%{box-shadow:0 0 0 6px rgba(74,222,128,0.15)} }
+.hero h1 {
+  font-family: var(--serif); font-size: clamp(2.4rem, 5vw, 3.8rem);
+  color: white; line-height: 1.15; font-weight: 400;
+  max-width: 700px; margin-bottom: 1.25rem;
+  animation: fadeUp .6s .1s ease both;
+}
+.hero h1 em { font-style: italic; color: rgba(255,255,255,0.75); }
+.hero-sub {
+  font-size: 1.05rem; color: rgba(255,255,255,0.75); font-weight: 300;
+  max-width: 560px; margin-bottom: 2.5rem; line-height: 1.7;
+  animation: fadeUp .6s .2s ease both;
+}
+.hero-actions {
+  display: flex; flex-wrap: wrap; gap: 12px; align-items: center;
+  animation: fadeUp .6s .3s ease both;
+}
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 11px 22px; border-radius: 8px;
+  font-family: var(--sans); font-size: 14px; font-weight: 600;
+  text-decoration: none; border: none; cursor: pointer;
+  transition: transform .15s, box-shadow .15s, opacity .15s;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn-white { background: white; color: var(--blue); }
+.btn-white:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
+.btn-teal { background: var(--nms-black); color: white; }
+.btn-teal:hover { background: #e0a200; box-shadow: 0 6px 20px rgba(15,110,86,0.35); }
+.btn-outline { background: transparent; color: white; border: 1.5px solid rgba(255,255,255,0.4); }
+.btn-outline:hover { background: rgba(255,255,255,0.08); }
+.hero-deadline {
+  margin-top: 2.5rem; padding-top: 2rem;
+  border-top: 1px solid rgba(255,255,255,0.15);
+  display: flex; flex-wrap: wrap; gap: 2rem;
+  animation: fadeUp .6s .4s ease both;
+}
+.hero-stat { }
+.hero-stat-num {
+  font-family: var(--serif); font-size: 2.2rem; color: white; line-height: 1;
+}
+.hero-stat-label { font-size: 12px; color: rgba(255,255,255,0.6); margin-top: 3px; font-weight: 400; }
+.hero-dl {
+  display: flex; align-items: center; gap: 10px;
+  background: rgba(250,181,0,0.25); border: 1px solid rgba(250,181,0,0.5);
+  border-radius: 8px; padding: 10px 16px;
+  font-size: 13px; color: #FAB500; font-weight: 500;
+  align-self: center;
+}
+
+@keyframes fadeUp { from { opacity:0; transform:translateY(18px) } to { opacity:1; transform:translateY(0) } }
+
+/* ── SECTIONS ── */
+section { padding: 5rem 2rem; }
+.section-inner { max-width: var(--max); margin: 0 auto; }
+.section-label {
+  font-size: 11px; font-weight: 600; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--nms-black); margin-bottom: .75rem;
+}
+.section-title {
+  font-family: var(--serif); font-size: clamp(1.8rem, 3vw, 2.5rem);
+  color: var(--gray-900); font-weight: 400; line-height: 1.2;
+  margin-bottom: 1rem;
+}
+.section-body {
+  font-size: 1rem; color: var(--gray-500); max-width: 640px;
+  line-height: 1.8; margin-bottom: 2.5rem;
+}
+
+/* ── ABOUT ── */
+#about { background: var(--gray-100); }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+.about-pillars { display: flex; flex-direction: column; gap: 1rem; }
+.pillar {
+  background: white; border-radius: var(--radius);
+  border-left: 4px solid var(--blue);
+  padding: 1.25rem 1.5rem;
+  transition: transform .2s, box-shadow .2s;
+}
+.pillar:hover { transform: translateX(4px); box-shadow: -4px 0 0 var(--teal), 4px 6px 18px rgba(0,0,0,0.07); }
+.pillar:nth-child(2) { border-left-color: var(--nms-yellow); }
+.pillar:nth-child(3) { border-left-color: var(--nms-black); }
+.pillar:nth-child(4) { border-left-color: #6B7280; }
+.pillar h3 { font-size: 15px; font-weight: 600; color: var(--gray-900); margin-bottom: 4px; }
+.pillar p { font-size: 13.5px; color: var(--gray-500); line-height: 1.6; }
+.about-pi {
+  background: white; border-radius: var(--radius);
+  padding: 2rem; border: 1px solid rgba(45,42,38,0.12);
+}
+.pi-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem; }
+.pi-avatar {
+  width: 72px; height: 72px; border-radius: 50%;
+  background: var(--nms-black); display: flex; align-items: center;
+  justify-content: center; font-family: var(--serif);
+  font-size: 20px; color: white; flex-shrink: 0;
+  overflow: hidden; border: 3px solid var(--nms-yellow);
+  position: relative; min-width: 72px;
+}
+.pi-avatar img {
+  width: 72px !important; height: 72px !important;
+  max-width: 72px !important; max-height: 72px !important;
+  object-fit: cover; object-position: center top;
+  display: block; position: absolute; top: 0; left: 0;
+  border-radius: 50%;
+}
+.pi-name { font-size: 16px; font-weight: 600; color: var(--gray-900); }
+.pi-title { font-size: 12.5px; color: var(--gray-500); margin-top: 2px; line-height: 1.5; }
+.pi-bio { font-size: 13.5px; color: var(--gray-500); line-height: 1.75; margin-bottom: 1.25rem; }
+.pi-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: .75rem; margin-bottom: 1.25rem; }
+.pi-stat {
+  background: var(--blue-pale); border-radius: 8px;
+  padding: .75rem; text-align: center;
+}
+.pi-stat-num { font-family: var(--serif); font-size: 1.6rem; color: var(--blue); line-height: 1; }
+.pi-stat-label { font-size: 11px; color: var(--gray-500); margin-top: 3px; }
+.pi-links { display: flex; flex-wrap: wrap; gap: 8px; }
+.pi-link {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 12px; font-weight: 500; color: var(--blue);
+  text-decoration: none; background: var(--blue-pale);
+  padding: 5px 11px; border-radius: 6px;
+  transition: background .15s;
+}
+.pi-link:hover { background: var(--blue-light); }
+
+/* ── STREAMS ── */
+#streams { background: white; }
+.streams-tabs { display: flex; gap: 8px; margin-bottom: 2.5rem; }
+.stab {
+  padding: 9px 20px; border-radius: 8px; font-size: 14px; font-weight: 600;
+  cursor: pointer; border: 1.5px solid transparent; transition: all .2s;
+  font-family: var(--sans);
+}
+.stab-phd { background: var(--blue-pale); color: var(--blue); border-color: var(--blue-light); }
+.stab-phd:hover, .stab-phd.active { background: var(--nms-black); color: white; border-color: var(--blue); }
+.stab-pd { background: var(--teal-pale); color: var(--nms-black); border-color: var(--teal-light); }
+.stab-pd:hover, .stab-pd.active { background: var(--nms-black); color: white; border-color: var(--nms-black); }
+.stream-panel { display: none; }
+.stream-panel.active { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1rem; }
+.stream-card {
+  border-radius: var(--radius); border: 1px solid var(--gray-300);
+  padding: 1.25rem 1.5rem; transition: transform .2s, box-shadow .2s, border-color .2s;
+  background: white; position: relative; overflow: hidden;
+}
+.stream-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+}
+.stream-card.phd::before { background: var(--nms-black); }
+.stream-card.pd::before { background: var(--nms-black); }
+.stream-card:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,0.08); border-color: var(--gray-300); }
+.stream-badge {
+  display: inline-block; font-size: 10px; font-weight: 700;
+  padding: 2px 8px; border-radius: 4px; margin-bottom: .6rem;
+  letter-spacing: .05em; text-transform: uppercase;
+}
+.badge-phd { background: var(--blue-light); color: var(--blue); }
+.badge-pd { background: var(--teal-light); color: var(--nms-black); }
+.stream-acronym { font-size: 13px; font-weight: 700; color: var(--gray-900); margin-bottom: 4px; letter-spacing: -.01em; }
+.stream-title { font-size: 13.5px; font-weight: 500; color: var(--gray-700); margin-bottom: .6rem; line-height: 1.4; }
+.stream-desc { font-size: 12.5px; color: var(--gray-500); line-height: 1.65; }
+.stream-card { cursor: pointer; }
+.stream-card .stream-expand {
+  display: none;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(45,42,38,0.08);
+}
+.stream-card.open .stream-expand { display: block; }
+.stream-expand-body {
+  font-size: 13px; color: var(--gray-700); line-height: 1.8;
+}
+.stream-expand-body p { margin-bottom: .75rem; }
+.stream-expand-body p:last-child { margin-bottom: 0; }
+.stream-toggle {
+  display: flex; align-items: center; gap: 5px;
+  font-size: 12px; font-weight: 600; color: var(--nms-black);
+  margin-top: .75rem; user-select: none;
+}
+.stream-toggle .arrow {
+  display: inline-block; transition: transform .25s ease;
+  font-style: normal; font-size: 11px;
+}
+.stream-card.open .stream-toggle .arrow { transform: rotate(180deg); }
+.stream-card:hover { border-color: var(--nms-yellow); }
+
+/* ── FUNDING ── */
+#funding { background: var(--gray-100); }
+.funding-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1rem; }
+.funding-card {
+  background: white; border-radius: var(--radius);
+  padding: 1.5rem; border: 1px solid rgba(45,42,38,0.12);
+  transition: transform .2s, box-shadow .2s;
+}
+.funding-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.07); }
+.funding-icon {
+  width: 40px; height: 40px; border-radius: 9px;
+  background: var(--blue-pale); display: flex; align-items: center;
+  justify-content: center; margin-bottom: 1rem; font-size: 18px;
+}
+.funding-name { font-size: 14px; font-weight: 700; color: var(--gray-900); margin-bottom: .4rem; }
+.funding-org { font-size: 11.5px; color: var(--blue); font-weight: 600; margin-bottom: .6rem; }
+.funding-desc { font-size: 12.5px; color: var(--gray-500); line-height: 1.6; }
+
+/* ── APPLY ── */
+#apply { background: white; }
+.apply-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2.5rem; }
+.apply-card {
+  border-radius: var(--radius); padding: 2rem;
+  display: flex; flex-direction: column; gap: 1rem;
+}
+.apply-card.phd { background: var(--nms-black); }
+.apply-card.pd { background: var(--nms-black); }
+.apply-card-label { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,0.6); }
+.apply-card-title { font-family: var(--serif); font-size: 1.6rem; color: white; font-weight: 400; line-height: 1.2; }
+.apply-card-count { font-size: 13px; color: rgba(255,255,255,0.7); }
+.apply-card .btn { align-self: flex-start; margin-top: auto; }
+.apply-steps { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+.step { display: flex; gap: 12px; align-items: flex-start; }
+.step-num {
+  width: 30px; height: 30px; border-radius: 50%;
+  background: var(--blue-pale); color: var(--blue);
+  font-size: 13px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.step-text { font-size: 13.5px; color: var(--gray-700); line-height: 1.5; }
+.step-text strong { color: var(--gray-900); display: block; font-weight: 600; margin-bottom: 2px; }
+.deadline-banner {
+  background: #FFF8E0; border: 1.5px solid #FAB500;
+  border-radius: var(--radius); padding: 1.25rem 1.75rem;
+  display: flex; align-items: center; gap: 1rem;
+  font-size: 14px; font-weight: 600; color: #5A4000;
+}
+.dl-icon { font-size: 22px; flex-shrink: 0; }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--nms-black); color: rgba(255,255,255,0.6);
+  padding: 3rem 2rem;
+}
+.footer-inner {
+  max-width: var(--max); margin: 0 auto;
+  display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: center;
+}
+.footer-name { font-family: var(--serif); font-size: 1.2rem; color: white; margin-bottom: 4px; }
+.footer-inst { font-size: 13px; }
+.footer-links { display: flex; gap: 1rem; flex-wrap: wrap; }
+.footer-links a { font-size: 12.5px; color: rgba(255,255,255,0.5); text-decoration: none; transition: color .15s; }
+.footer-links a:hover { color: white; }
+.footer-copy { font-size: 11.5px; margin-top: .5rem; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .about-grid { grid-template-columns: 1fr; }
+  .apply-grid { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+  .hero-deadline { gap: 1.25rem; }
+  .pi-stats { grid-template-columns: repeat(3,1fr); }
+}
+@media (max-width: 480px) {
+  .hero-actions { flex-direction: column; align-items: flex-start; }
+  .streams-tabs { flex-direction: column; }
+  .stream-panel.active { grid-template-columns: 1fr; }
+}
+
+/* ── SCROLL ANIMATION ── */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .55s ease, transform .55s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-mark" style="background:transparent;padding:0;overflow:visible;">
+        <svg width="34" height="34" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs><clipPath id="nc"><path d="M4,4 L4,68 L34,68 Q68,68 68,36 Q68,4 34,4 Z"/></clipPath></defs>
+          <path d="M4,4 L4,68 L34,68 Q68,68 68,36 Q68,4 34,4 Z" fill="#2D2A26"/>
+          <path d="M14,14 L14,58 L34,58 Q56,58 56,36 Q56,14 34,14 Z" fill="white"/>
+          <polygon points="36,17 50,17 57,29 50,41 36,41 29,29" fill="#FAB500" clip-path="url(#nc)"/>
+          <polygon points="36,17 50,17 57,29 50,41 36,41 29,29" fill="none" stroke="white" stroke-width="1.4"/>
+          <polyline points="30,29 35,29 38.5,19 42,38 45.5,24 49,29 54,29 57,29" fill="none" stroke="#2D2A26" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" clip-path="url(#nc)"/>
+        </svg>
+      </div>
+      <div>
+        <div class="nav-logo-text">DSAI Hub for Health</div>
+        <div class="nav-logo-sub">NOVA Medical School</div>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#streams">Research Streams</a></li>
+      <li><a href="#funding">Funding</a></li>
+      <li><a href="#apply" class="nav-cta">Apply — 15 Jul 2026</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div style="margin-bottom:1.5rem;">
+      <svg width="80" height="80" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg" aria-label="DSAI Hub for Health logo">
+        <defs><clipPath id="hc"><path d="M4,4 L4,68 L34,68 Q68,68 68,36 Q68,4 34,4 Z"/></clipPath></defs>
+        <path d="M4,4 L4,68 L34,68 Q68,68 68,36 Q68,4 34,4 Z" fill="rgba(255,255,255,0.15)"/>
+        <path d="M14,14 L14,58 L34,58 Q56,58 56,36 Q56,14 34,14 Z" fill="rgba(255,255,255,0.12)"/>
+        <polygon points="36,17 50,17 57,29 50,41 36,41 29,29" fill="#FAB500" clip-path="url(#hc)"/>
+        <polygon points="36,17 50,17 57,29 50,41 36,41 29,29" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.4"/>
+        <polyline points="30,29 35,29 38.5,19 42,38 45.5,24 49,29 54,29 57,29" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" clip-path="url(#hc)"/>
+      </svg>
+    </div>
+    <div class="hero-pill">
+      <span class="pill-dot"></span>
+      Recruiting for 2026 &middot; Deadline 15 July
+    </div>
+    <h1>Data Science &amp; AI<br><em>for Health</em></h1>
+    <p class="hero-sub">A research hub at NOVA Medical School led by two principal investigators — combining expertise in data science, AI methodology, computational cardiology, and clinical electrophysiology to produce trustworthy, clinically meaningful research.</p>
+    <div class="hero-actions">
+      <a href="#apply" class="btn btn-white">Apply as PhD student</a>
+      <a href="#apply" class="btn btn-teal">Apply as Postdoctoral researcher</a>
+      <a href="#streams" class="btn btn-outline">Explore research streams</a>
+    </div>
+    <div class="hero-deadline">
+      <div class="hero-stat">
+        <div class="hero-stat-num">2</div>
+        <div class="hero-stat-label">Principal investigators</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">148+</div>
+        <div class="hero-stat-label">peer-reviewed publications</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">14</div>
+        <div class="hero-stat-label">open research streams</div>
+      </div>
+      <div class="hero-dl">
+        &#x23F3; &nbsp;Application deadline: <strong>15 July 2026</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid reveal">
+      <div>
+        <div class="section-label">About the Hub</div>
+        <h2 class="section-title">Research at the interface of AI and medicine</h2>
+        <p class="section-body">The DSAI Hub for Health brings together two complementary principal investigators — combining expertise in advanced statistical and AI methodology with deep clinical knowledge in paediatric cardiology, autonomic physiology, and electrophysiology. Our research is organised around four pillars: trustworthy and explainable AI, clinical AI translation, precision cardiology, and causal &amp; computational statistics. We partner with clinicians, health organisations, and technology developers to produce research that is technically excellent and genuinely useful in healthcare settings.</p>
+        <div class="about-pillars">
+          <div class="pillar">
+            <h3>Trustworthy AI</h3>
+            <p>Explainability, robustness, fairness, causal reasoning, and privacy-preserving learning in clinical contexts.</p>
+          </div>
+          <div class="pillar">
+            <h3>Clinical AI Translation</h3>
+            <p>Adoption science, organisational readiness, digital transformation, and regulatory pathways for AI as a medical device.</p>
+          </div>
+          <div class="pillar">
+            <h3>Precision Cardiology</h3>
+            <p>Digital twins, wearable foundation models, inherited arrhythmias, paediatric CHD, and continuous risk surveillance.</p>
+          </div>
+          <div class="pillar">
+            <h3>Causal &amp; Computational Statistics</h3>
+            <p>Causal inference, survival analysis, high-dimensional modelling, synthetic data, and spatiotemporal methods for health research.</p>
+          </div>
+        </div>
+      </div>
+      <div class="about-pi reveal">
+        <!-- Jorge M. Mendes -->
+        <div class="pi-header">
+          <div class="pi-avatar">
+            <img src="jorge_mendes.jpg" alt="Jorge M. Mendes" onerror="this.style.display='none';this.parentNode.innerHTML='JM';">
+          </div>
+          <div>
+            <div class="pi-name">Jorge M. Mendes</div>
+            <div class="pi-title">Associate Professor with Habilitation &middot; NOVA Medical School / NOVA Information Management School<br>Coordinator, NOVA Medical School Data &amp; Computation Centre</div>
+          </div>
+        </div>
+        <p class="pi-bio">PhD in Statistics and Operations Research (ULisboa, 2006) and Habilitation in Health Sciences — Biomedicine (NOVA, 2025). Research spans Bayesian modelling, spatiotemporal epidemiology, AI in healthcare, and digital health evaluation. Lead statistician on EpiReumaPt, the World Mental Health Survey, and projects with Eurostat, the European Commission, EFSA, and AstraZeneca. Currently involved in AI/ML projects on cancer with the MAQC Society and EATRIS–IQVIA.</p>
+        <div class="pi-links">
+          <a href="https://www.nms.unl.pt/pt-pt/faculdade/quem-somos/detalhe/personid/18698" target="_blank" class="pi-link">NMS</a>
+          <a href="https://www.cienciavitae.pt/portal/5411-CF11-16E0" target="_blank" class="pi-link">Ci&ecirc;nciaVitae</a>
+          <a href="https://www.scopus.com/authid/detail.uri?authorId=7006448639" target="_blank" class="pi-link">Scopus</a>
+          <a href="https://loop.frontiersin.org/people/2906863/bio" target="_blank" class="pi-link">Loop</a>
+          <a href="https://orcid.org/0000-0003-2251-3803" target="_blank" class="pi-link">ORCID</a>
+          <a href="https://scholar.google.pt/citations?user=qQfK5cEAAAAJ" target="_blank" class="pi-link">Google Scholar</a>
+          <a href="https://novaresearch.unl.pt/en/persons/jorge-morais-mendes" target="_blank" class="pi-link">NOVA Research</a>
+          <a href="https://www.linkedin.com/in/jorge-m-mendes-182522251" target="_blank" class="pi-link">LinkedIn</a>
+          <a href="mailto:jorge.mendes@nms.unl.pt" class="pi-link">&#x2709; jorge.mendes@nms.unl.pt</a>
+        </div>
+
+        <div style="border-top:1px solid #e8e8e6; margin:1.5rem 0;"></div>
+
+        <!-- Sérgio Laranjo -->
+        <div class="pi-header">
+          <div class="pi-avatar">
+            <img src="sergio_laranjo.jpg" alt="S&eacute;rgio Laranjo" onerror="this.style.display='none';this.parentNode.innerHTML='SL';">
+          </div>
+          <div>
+            <div class="pi-name">S&eacute;rgio Laranjo</div>
+            <div class="pi-title">Assistant Professor with Habilitation &middot; NOVA Medical School &middot; FESC &middot; FACC<br>Paediatric Cardiologist, Hospital Santa Marta<br>Academic Director of NMS Knowledge Centre in AI and Digital Health<br>Deputy Director of the D&sup3;@NOVA</div>
+          </div>
+        </div>
+        <p class="pi-bio">MD &middot; PhD in Physiology (ULisboa, 2020) &middot; Habilitation in Clinical Research — Physiology (NOVA, 2025). Leads clinical units in paediatric arrhythmology, cardiac rehabilitation, and syncope. PI on EITHealth projects CURE-AF and SAVE-COR, and H2020 HosmartAI. ERN GUARD-Heart representative. Co-founder of iBiTron medtech startup. Expertise: computational cardiology, autonomic physiology, clinical electrophysiology, digital health.</p>
+        <div class="pi-links">
+          <a href="https://www.nms.unl.pt/en-us/faculty/who-are-we/person-detail/n/S%C3%A9rgio%20Laranjo/personid/17704" target="_blank" class="pi-link">NMS</a>
+          <a href="https://www.cienciavitae.pt/portal/en/351B-92E1-0C50" target="_blank" class="pi-link">Ci&ecirc;nciaVitae</a>
+          <a href="https://www.scopus.com/authid/detail.uri?authorId=24391148400" target="_blank" class="pi-link">Scopus</a>
+          <a href="https://loop.frontiersin.org/people/36332/overview" target="_blank" class="pi-link">Loop</a>
+          <a href="https://orcid.org/0000-0003-2169-4024" target="_blank" class="pi-link">ORCID</a>
+          <a href="https://scholar.google.com/citations?user=_hjVDycAAAAJ&hl=en" target="_blank" class="pi-link">Google Scholar</a>
+          <a href="https://novaresearch.unl.pt/en/persons/s%C3%A9rgio-miguel-matoso-laranjo/" target="_blank" class="pi-link">NOVA Research</a>
+          <a href="https://www.linkedin.com/in/s%C3%A9rgio-laranjo-3b72807" target="_blank" class="pi-link">LinkedIn</a>
+          <a href="mailto:sergio.laranjo@nms.unl.pt" class="pi-link">&#x2709; sergio.laranjo@nms.unl.pt</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STREAMS -->
+<section id="streams">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">Open Positions &middot; 2026 Cohort</div>
+      <h2 class="section-title">Research streams</h2>
+      <p class="section-body">Select your level to explore the available streams. You may express interest in up to three streams per application.</p>
+    </div>
+    <div class="streams-tabs reveal">
+      <button class="stab stab-phd active" onclick="showStreams('phd',this)">PhD streams &mdash; 7 positions</button>
+      <button class="stab stab-pd" onclick="showStreams('pd',this)">Postdoctoral streams &mdash; 7 positions</button>
+    </div>
+
+    <div class="stream-panel active" id="panel-phd">
+      <div class="stream-card phd reveal" onclick="toggleStream(this)" role="button" tabindex="0" aria-expanded="false">
+        <span class="stream-badge badge-phd">PhD</span>
+        <div class="stream-acronym">SHIFT-XAI</div>
+        <div class="stream-title">Explainability Under Distribution Shift in Medical Imaging AI</div>
+        <div class="stream-desc">Investigating the robustness of explainability methods under real-world data shift in medical imaging, establishing benchmarks and methods for cross-site deployment.</div>
+        <div class="stream-toggle">Read full description <span class="arrow">&#x25BC;</span></div>
+        <div class="stream-expand">
+          <div class="stream-expand-body"><p>Medical imaging has become one of the most active areas for AI development in healthcare. Yet, concerns remain about generalisability across hospitals, scanners, protocols, and patient populations. These concerns extend beyond predictive performance to the explanations used to justify model outputs. Explanation methods may appear plausible but become unstable or misleading under distribution shifts, creating a serious barrier to safe translation into clinical practice.</p><p>This project will investigate the robustness of explainability methods under real-world data shift in medical imaging. It will establish benchmark settings for stress-testing explanations, compare intrinsically interpretable and post hoc approaches, and develop methods to detect and mitigate degradation in explanation quality across settings. The project will generate high-impact methodological and practical outputs, including evaluation protocols for robust explainability, guidance for cross-site deployment, and evidence to support more reliable use of imaging AI in heterogeneous clinical environments.</p></div>
+        </div>
+      </div>
+      <div class="stream-card phd reveal" onclick="toggleStream(this)" role="button" tabindex="0" aria-expanded="false">
+        <span class="stream-badge badge-phd">PhD</span>
+        <div class="stream-acronym">READY-AI</div>
+        <div class="stream-title">Organisational Readiness and Digital Maturity for AI Adoption in Hospitals</div>
+        <div class="stream-desc">Designing and validating multidimensional frameworks for assessing institutional preparedness for AI adoption — from governance and data quality to staff capability.</div>
+        <div class="stream-toggle">Read full description <span class="arrow">&#x25BC;</span></div>
+        <div class="stream-expand">
+          <div class="stream-expand-body"><p>The successful adoption of AI in hospitals depends not only on the quality of the technology but on the institution's capacity to integrate it responsibly into clinical and organisational practice. Hospitals differ substantially in their digital maturity, governance structures, interoperability, data quality, staff capabilities, and readiness to evaluate and sustain innovation. Yet there is still no widely accepted framework for measuring institutional preparedness for AI adoption in a rigorous, comparable, and operationally useful way.</p><p>This project will design and validate a multidimensional framework for assessing organisational readiness and digital maturity for AI adoption in hospital settings. It will develop and test measurement instruments across institutions with varying levels of digital capability, generating evidence that can support benchmarking, targeted improvement, and more effective implementation strategies.</p></div>
+        </div>
+      </div>
+      <div class="stream-card phd reveal" onclick="toggleStream(this)" role="button" tabindex="0" aria-expanded="false">
+        <span class="stream-badge badge-phd">PhD</span>
+        <div class="stream-acronym">PaedECG-FM</div>
+        <div class="stream-title">A Foundation Model for the Developing Heart</div>
+        <div class="stream-desc">Designing the first paediatric-aware ECG foundation model using age-conditioned self-supervision, structural tokenisation, and few-shot adaptation for rare arrhythmia phenotypes.</div>
+        <div class="stream-toggle">Read full description <span class="arrow">&#x25BC;</span></div>
+        <div class="stream-expand">
+          <div class="stream-expand-body"><p>Paediatric electrocardiography sits at the intersection of two challenges that current AI cannot solve. ECG morphology evolves continuously with age, body habitus, and cardiac structural maturation, violating the implicit stationarity assumption of adult-trained models. At the same time, paediatric arrhythmias and channelopathies are individually rare and labelled data is scarce and fragmented across small specialist centres.</p><p>This project will design and pretrain the first paediatric-aware ECG foundation model, combining age-conditioned self-supervision, structural-heterogeneity-aware tokenisation, and few-shot adaptation strategies for rare phenotypes. The work will draw on a large multicentre paediatric ECG resource and external validation through ERN GUARD-Heart. Expected outcomes include open-source pretrained weights, a reusable paediatric ECG benchmark suite, and demonstrated clinical utility for problems such as Long-QT misclassification, post-operative arrhythmia detection in CHD, and Brugada phenotype recognition.</p></div>
+        </div>
+      </div>
+      <div class="stream-card phd reveal" onclick="toggleStream(this)" role="button" tabindex="0" aria-expanded="false">
+        <span class="stream-badge badge-phd">PhD</span>
+        <div class="stream-acronym">MNAR-TIME</div>
+        <div class="stream-title">Causal Inference with Time-Varying Treatments and Informative Missingness in Longitudinal Clinical Data</div>
+        <div class="stream-desc">Developing unified methodology for causal inference with time-varying treatments and non-ignorable missing data — addressing a critical gap in pharmacoepidemiology and comparative effectiveness research.</div>
+        <div class="stream-toggle">Read full description <span class="arrow">&#x25BC;</span></div>
+        <div class="stream-expand">
+          <div class="stream-expand-body"><p>Estimating the causal effects of treatments that change over time is a central challenge in pharmacoepidemiology and comparative effectiveness research. Methods such as marginal structural models, g-estimation, and targeted learning have established a rigorous theoretical foundation, but nearly all assume that the mechanism generating missing data is ignorable given observed history. In practice, clinical records are replete with informative dropout.</p><p>This project will develop a unified methodological framework for causal inference with time-varying treatments in the presence of non-ignorable missingness in longitudinal observational data. It will formalise a class of shared-parameter semi-MNAR models that couple the dropout mechanism directly with the causal model, and derive identification conditions under which the estimands of interest remain recoverable. Estimation will proceed within a Bayesian hierarchical framework, enabling principled uncertainty propagation across both the causal and missingness components.</p></div>
+        </div>
+      </div>
+      <div class="stream-card phd reveal" onclick="toggleStream(this)" role="button" tabindex="0" aria-expanded="false">
+        <span class="stream-badge badge-phd">PhD</span>
+        <div class="stream-acronym">FairFed-Health</div>
+        <div class="stream-title">Federated Learning with Statistical Fairness Guarantees under Non-IID Heterogeneity in Healthcare</div>
+        <div class="stream-desc">Building theoretically grounded federated learning frameworks with explicit statistical guarantees on model quality and algorithmic fairness under realistic non-IID conditions across healthcare institutions.</div>
+        <div class="stream-toggle">Read full description <span class="arrow">&#x25BC;</span></div>
+        <div class="stream-expand">
+          <div class="stream-expand-body"><p>Federated learning has become an attractive paradigm for collaborative model development across healthcare institutions, allowing sites to contribute to a shared model without transferring sensitive patient data. Yet, the settings in which federated learning is most valuable are also those in which it faces the most serious statistical difficulties. Data distributions across institutions are rarely exchangeable, violating the IID assumption that underpins most aggregation strategies.</p><p>This project will develop a theoretically grounded framework for federated learning in healthcare that provides explicit statistical guarantees on both model quality and algorithmic fairness under realistic non-IID conditions. It will formalise fairness criteria that are estimable without access to raw data, characterise the asymptotic tradeoff between global efficiency and site-level equity, and propose weighted aggregation schemes with coverage guarantees under distributional shift. Expected outputs include a formal theory of federated fairness, open-source methodology, and evidence relevant to regulatory frameworks governing AI in healthcare.</p></div>
+        </div>
+      </div>
+      <div class="stream-card phd reveal" onclick="toggleStream(this)" role="button" tabindex="0" aria-expanded="false">
+        <span class="stream-badge badge-phd">PhD</span>
+        <div class="stream-acronym">ADOPT-AI</div>
+        <div class="stream-title">Modelling the Adoption of Clinical AI Beyond Intention to Use</div>
+        <div class="stream-desc">Building empirical frameworks for AI adoption in healthcare, moving beyond self-reported intentions to capture real organisational, behavioural, and institutional mechanisms.</div>
+        <div class="stream-toggle">Read full description <span class="arrow">&#x25BC;</span></div>
+        <div class="stream-expand">
+          <div class="stream-expand-body"><p>Healthcare organisations are investing in artificial intelligence at an accelerating pace. Yet, many systems do not progress beyond pilot implementation or fail to become embedded in routine care. Existing research on adoption often relies too heavily on perceived usefulness or intention to use, while paying insufficient attention to observed behaviour, organisational conditions, workflow integration, and institutional context.</p><p>This project will develop a new empirical framework for understanding the adoption of AI-based tools in healthcare by combining established implementation models with real-world data on use, uptake, and organisational readiness. It will move beyond self-reported intentions and capture the mechanisms by which AI systems are accepted, resisted, adapted to, or abandoned in practice. Expected outcomes include a more realistic, analytically grounded model of AI adoption, validated metrics linking intention and actual use, and practical insights to support the design and implementation of digital technologies with a higher likelihood of sustained impact.</p></div>
+        </div>
+      </div>
+      <div class="stream-card phd reveal" onclick="toggleStream(this)" role="button" tabindex="0" aria-expanded="false">
+        <span class="stream-badge badge-phd">PhD</span>
+        <div class="stream-acronym">WearSSL</div>
+        <div class="stream-title">Self-Supervised Foundation Models for Continuous Cardiovascular Risk</div>
+        <div class="stream-desc">Pretraining multimodal self-supervised foundation models on heterogeneous wearable data for joint circadian, autonomic, and arrhythmic risk prediction in free-living settings.</div>
+        <div class="stream-toggle">Read full description <span class="arrow">&#x25BC;</span></div>
+        <div class="stream-expand">
+          <div class="stream-expand-body"><p>Consumer-grade wearables now generate orders of magnitude more cardiovascular time series than hospital monitoring systems, but their scientific exploitation remains shallow. Most published work either fine-tunes narrow classifiers on single tasks or repurposes architectures designed for hospital ECG, ignoring the unique noise structure, intermittency, and heterogeneity of free-living signals.</p><p>This project will pretrain a multimodal self-supervised foundation model on heterogeneous wearable data, including PPG, single-lead ECG, accelerometry, and sleep stages, using masked modelling and contrastive objectives designed to be robust to modality dropout and irregular sampling. The model will be evaluated on pre-syncopal state detection, post-Fontan early decompensation, and arrhythmia prediction in inherited channelopathies. Expected outputs include an open-pretrained backbone, an evaluation suite spanning paediatric and adult cardiology, and clinical evidence of incremental value over current single-task baselines.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stream-panel" id="panel-pd">
+      <div class="stream-card pd reveal" onclick="toggleStream(this)" role="button" tabindex="0" aria-expanded="false">
+        <span class="stream-badge badge-pd">Postdoc</span>
+        <div class="stream-acronym">CAUSE-DIGI</div>
+        <div class="stream-title">Causal Evaluation of Digital Technology Adoption and Workflow Impact in Healthcare</div>
+        <div class="stream-desc">Applying causal inference and quasi-experimental methods to evaluate the real-world impact of AI-enabled technologies on clinical workflow, organisational performance, and service delivery.</div>
+        <div class="stream-toggle">Read full description <span class="arrow">&#x25BC;</span></div>
+        <div class="stream-expand">
+          <div class="stream-expand-body"><p>Digital technologies are frequently introduced into healthcare with the promise of improving efficiency, quality, and decision-making. Yet, the evidence based on their real-world effects is often weak. Adoption studies commonly focus on user perceptions or simple before-and-after comparisons, which are not sufficient to determine whether a technology genuinely improves workflow, reduces burden, or changes patient pathways in meaningful ways.</p><p>This project will apply causal inference and quasi-experimental methods to evaluate the impact of digital and AI-enabled technologies on clinical workflow, organisational performance, and service delivery. By integrating routinely collected operational data with implementation indicators, the project will identify what changes after deployment, for whom, and under what conditions.</p></div>
+        </div>
+      </div>
+      <div class="stream-card pd reveal" onclick="toggleStream(this)" role="button" tabindex="0" aria-expanded="false">
+        <span class="stream-badge badge-pd">Postdoc</span>
+        <div class="stream-acronym">RECOVER-SYNCOPE</div>
+        <div class="stream-title">From a Tilt-Table Cohort to a European Decision-Support Tool</div>
+        <div class="stream-desc">Transforming an existing tilt-table cohort into a validated, deployable decision-support tool for syncope triage, with external validation across European syncope centres.</div>
+        <div class="stream-toggle">Read full description <span class="arrow">&#x25BC;</span></div>
+        <div class="stream-expand">
+          <div class="stream-expand-body"><p>Syncope is among the most common reasons for unscheduled cardiology evaluation. Yet, diagnostic pathways remain fragmented and tilt-table testing — the established mechanistic gold standard — is interpreted with substantial centre-level variability. Years of structured tilt-table data accumulated within a single high-volume syncope unit constitute a methodologically rich yet underexploited resource.</p><p>This project will transform an existing tilt-table cohort into a clinically useful decision-support tool for syncope, combining interpretable autonomic-signal modelling with phenotype clustering anchored on clinical outcomes rather than tilt response alone. The work will pre-register an external validation study across at least two additional European syncope centres and integrate the model into a clinically governed prototype within the host hospital information system.</p></div>
+        </div>
+      </div>
+      <div class="stream-card pd reveal" onclick="toggleStream(this)" role="button" tabindex="0" aria-expanded="false">
+        <span class="stream-badge badge-pd">Postdoc</span>
+        <div class="stream-acronym">SynthStat</div>
+        <div class="stream-title">Statistical Properties of Synthetic Health Data: Estimand Preservation, Causal Fidelity, and Regulatory Validity</div>
+        <div class="stream-desc">Establishing formal statistical theory of estimand preservation for synthetic health data — characterising when marginal, associational, and causal estimands converge to their population counterparts under deep generative models.</div>
+        <div class="stream-toggle">Read full description <span class="arrow">&#x25BC;</span></div>
+        <div class="stream-expand">
+          <div class="stream-expand-body"><p>The generation of synthetic health data using deep generative models — variational autoencoders, generative adversarial networks, and diffusion models — is rapidly expanding in scope and ambition, driven by the prospect of enabling secondary analysis, collaborative research, and regulatory submissions without exposing individual-level records. Despite this momentum, the statistical foundations of synthetic data for inference remain underdeveloped.</p><p>This project will establish a formal statistical theory of estimand preservation for synthetic health data, characterising the conditions under which marginal, associational, and causal estimands derived from synthetic data converge to their counterparts in the original population. It will develop diagnostic tests for causal fidelity, propose metrics for regulatory use grounded in statistical decision theory, and formally analyse the privacy-utility frontier. The framework will be applied to representative clinical datasets with direct relevance to the European Health Data Space and the AI Act.</p></div>
+        </div>
+      </div>
+      <div class="stream-card pd reveal" onclick="toggleStream(this)" role="button" tabindex="0" aria-expanded="false">
+        <span class="stream-badge badge-pd">Postdoc</span>
+        <div class="stream-acronym">MultiLat-SEM</div>
+        <div class="stream-title">Unified Latent Factor Models for Multimodal Longitudinal Clinical Data with Complex Missingness</div>
+        <div class="stream-desc">Developing Bayesian latent factor frameworks for multimodal longitudinal data combining imaging biomarkers, laboratory measurements, patient-reported outcomes, and genomic information with modality-specific missingness mechanisms.</div>
+        <div class="stream-toggle">Read full description <span class="arrow">&#x25BC;</span></div>
+        <div class="stream-expand">
+          <div class="stream-expand-body"><p>Clinical research increasingly draws on data from multiple sources simultaneously, combining imaging biomarkers, laboratory measurements, patient-reported outcome scales, and genomic information within a single cohort. These modalities are heterogeneous in measurement scale, temporal resolution, and missingness pattern, and they are conceptually linked through shared latent constructs that no single modality measures directly.</p><p>This project will develop a unified Bayesian latent factor framework for multimodal longitudinal data that accommodates heterogeneous measurement scales, modality-specific missingness mechanisms, and time-varying factor structure within a single coherent model. Expected deliverables include a formal identifiability analysis, scalable open-source software, and applied evidence from multimodal clinical studies.</p></div>
+        </div>
+      </div>
+      <div class="stream-card pd reveal" onclick="toggleStream(this)" role="button" tabindex="0" aria-expanded="false">
+        <span class="stream-badge badge-pd">Postdoc</span>
+        <div class="stream-acronym">CalibDrift</div>
+        <div class="stream-title">Prospective Calibration Monitoring and Recalibration of Clinical Prediction Models under Concept Drift</div>
+        <div class="stream-desc">Developing sequential testing and conformal prediction frameworks for prospective calibration monitoring of deployed clinical prediction models — providing finite-sample error rate control and adaptive recalibration.</div>
+        <div class="stream-toggle">Read full description <span class="arrow">&#x25BC;</span></div>
+        <div class="stream-expand">
+          <div class="stream-expand-body"><p>Clinical prediction models are developed and validated in one population and subsequently deployed in settings that may differ substantially from the development context. Coding practices change, demographic profiles shift, treatment guidelines evolve, and new comorbidities emerge over time. Current approaches to recalibration are largely retrospective and do not provide statistical guarantees on coverage or error control under sequential inference.</p><p>This project will develop a framework for prospective calibration monitoring and adaptive recalibration of clinical prediction models under concept drift, drawing on sequential testing, online learning, and conformal prediction. The framework will be applied to prediction models deployed in multi-year electronic health record environments in oncology, cardiology, and emergency medicine.</p></div>
+        </div>
+      </div>
+      <div class="stream-card pd reveal" onclick="toggleStream(this)" role="button" tabindex="0" aria-expanded="false">
+        <span class="stream-badge badge-pd">Postdoc</span>
+        <div class="stream-acronym">VAL2USE-AI</div>
+        <div class="stream-title">From Validation to Uptake: Adoption Pathways for AI and Software as a Medical Device</div>
+        <div class="stream-desc">Characterising and modelling how AI and software as a medical device move from technical validation to sustained clinical adoption — identifying conditions that support or block translation.</div>
+        <div class="stream-toggle">Read full description <span class="arrow">&#x25BC;</span></div>
+        <div class="stream-expand">
+          <div class="stream-expand-body"><p>Many AI tools in healthcare achieve encouraging performance in development studies but fail to reach sustained use in practice. This translational gap reflects the fact that adoption is shaped by more than algorithmic accuracy. Interoperability, regulation, procurement, workflow fit, user trust, explainability, training, and post-deployment monitoring all influence whether a tool progresses from technical validation to meaningful integration.</p><p>This project will characterise and model the pathway through which AI and software as a medical device move from validation to uptake in real healthcare systems. Expected outputs include an integrated translational framework, evidence-informed recommendations for developers and health organisations, and a stronger basis for designing adoption strategies that are realistic, scalable, and aligned with healthcare needs.</p></div>
+        </div>
+      </div>
+      <div class="stream-card pd reveal" onclick="toggleStream(this)" role="button" tabindex="0" aria-expanded="false">
+        <span class="stream-badge badge-pd">Postdoc</span>
+        <div class="stream-acronym">PEDIA-PASS</div>
+        <div class="stream-title">Continuous Outpatient Surveillance after Fontan Palliation</div>
+        <div class="stream-desc">Developing a clinically governed continuous surveillance pathway for Fontan patients using multimodal wearables, home spirometry, and patient-reported outcomes with uncertainty quantification.</div>
+        <div class="stream-toggle">Read full description <span class="arrow">&#x25BC;</span></div>
+        <div class="stream-expand">
+          <div class="stream-expand-body"><p>Patients living with single-ventricle physiology after Fontan palliation now constitute a growing adult congenital heart disease population in whom subclinical decompensation typically precedes catastrophic events by weeks to months. Their care is currently structured around in-clinic follow-up at intervals that are demonstrably too coarse to detect early haemodynamic, autonomic, and arrhythmic deterioration.</p><p>This project will develop and prospectively evaluate a continuous outpatient surveillance pathway for Fontan patients, combining multimodal wearable signals, home spirometry, and longitudinal patient-reported outcomes within a clinically governed monitoring platform. Expected outcomes include a validated digital surveillance pathway, evidence on event-prediction lead time, and a deployment-ready protocol suitable for replication across European adult-CHD centres.</p></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FUNDING -->
+<section id="funding">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">Funding Opportunities</div>
+      <h2 class="section-title">We support your application</h2>
+      <p class="section-body">Selected candidates receive active mentorship in developing competitive funding proposals. We have experience supporting applications across all programmes below.</p>
+    </div>
+    <div class="funding-grid">
+      <div class="funding-card reveal">
+        <div class="funding-icon">&#x1F1F5;&#x1F1F9;</div>
+        <div class="funding-name">FCT PhD Grants</div>
+        <div class="funding-org">Funda&ccedil;&atilde;o para a Ci&ecirc;ncia e Tecnologia</div>
+        <div class="funding-desc">Annual PhD scholarship competition open to Portuguese nationals and international students enrolled at Portuguese institutions. Strong track record in our group. <a href="https://www.fct.pt/en/concursos/concurso-bolsas-de-doutoramento-2026-linha-de-candidatura-geral/" target="_blank" style="color:var(--nms-black);font-weight:600;">Learn more &rarr;</a></div>
+      </div>
+      <div class="funding-card reveal">
+        <div class="funding-icon">&#x1F535;</div>
+        <div class="funding-name">Google PhD Fellowship</div>
+        <div class="funding-org">Google Research</div>
+        <div class="funding-desc">Google PhD Fellowships directly support graduate students as they pursue their PhD. Created to recognise outstanding students doing exceptional and innovative research in areas relevant to computer science and related fields. Fellowships support promising PhD candidates of all backgrounds who seek to influence the future of technology. The next call is expected to open in March 2027. <a href="https://research.google/programs-and-events/phd-fellowship/" target="_blank" style="color:var(--nms-black);font-weight:600;">Learn more &rarr;</a></div>
+      </div>
+      <div class="funding-card reveal">
+        <div class="funding-icon">&#x1F393;</div>
+        <div class="funding-name">EUTOPIA Doctoral Fellowships</div>
+        <div class="funding-org">EUTOPIA European University Alliance &middot; NOVA University Lisbon &middot; Call open until 13 June 2026</div>
+        <div class="funding-desc">The EUTOPIA PhD Co-tutelle Programme offers funded doctoral positions of three to four years, co-supervised by academics from two EUTOPIA partner universities. NOVA is a member of this ten-university European alliance alongside Vrije Universiteit Brussel, CY Cergy Paris Universit&eacute;, University of Gothenburg, University of Ljubljana, Universitat Pompeu Fabra, University of Warwick, Babe&#x219;-Bolyai University, TU Dresden, and Ca&#x27; Foscari Venice. Projects in all research areas are eligible. Candidates based at NOVA receive an FCT-funded scholarship for up to four years, with a mandatory research period of 12 to 24 months at the partner institution. Upon completion, a joint doctoral degree is awarded by both institutions. <a href="https://www.unl.pt/en/noticias/nova/doctoral-fellowships-within-eutopia-alliance-call-open-until-june-13/" target="_blank" style="color:var(--nms-black);font-weight:600;">Learn more &rarr;</a></div>
+      </div>
+      <div class="funding-card reveal">
+        <div class="funding-icon">&#x1F49B;</div>
+        <div class="funding-name">INPhINIT Doctoral Fellowships &mdash; Incoming</div>
+        <div class="funding-org">&ldquo;la Caixa&rdquo; Foundation &middot; Spain &amp; Portugal</div>
+        <div class="funding-desc">The INPhINIT Incoming programme awards 30 doctoral fellowships per year to researchers of any nationality wishing to pursue a PhD at centres of excellence in Spain or Portugal. Eligible host institutions include Portuguese R&amp;D centres classified as &ldquo;Excellent&rdquo; by FCT — a category that includes NOVA Medical School&rsquo;s research units. Fellowships cover up to four years and include labour costs, research costs, doctoral tuition fees, and an on-site training programme in multidisciplinary skills. The <strong>Incoming</strong> modality requires that candidates have not resided or carried out their main activity in Spain or Portugal for more than 12 months in the three years prior to the call deadline — making it particularly suited to international candidates joining the DSAI Hub from abroad. <a href="https://lacaixafoundation.org/en/doctoral-inphinit-fellowships-incoming-call" target="_blank" style="color:var(--nms-black);font-weight:600;">Learn more &rarr;</a></div>
+      </div>
+      <div class="funding-card reveal">
+        <div class="funding-icon">&#x1F3DB;&#xFE0F;</div>
+        <div class="funding-name">FCT | ACL PhD Fellowships 2026</div>
+        <div class="funding-org">Academia das Ci&ecirc;ncias de Lisboa &amp; FCT &middot; Deadline: 15 September 2026</div>
+        <div class="funding-desc">Two funded PhD fellowships (monthly stipend &euro;1,309.64 + tuition fees + travel allowances, up to 4 years) in scientific areas aligned with ACL&rsquo;s classes — including Medical and Health Sciences, Information Sciences and Technologies, and Mathematics. Open to national and EU/non-EU citizens holding a master&rsquo;s degree. Research must be conducted at a Portuguese R&amp;D unit. <a href="https://www.acad-ciencias.pt/academia/bolsas/" target="_blank" style="color:var(--nms-black);font-weight:600;">Learn more &rarr;</a></div>
+      </div>
+      <div class="funding-card reveal">
+        <div class="funding-icon">&#x1F1EA;&#x1F1FA;</div>
+        <div class="funding-name">MSCA Postdoctoral Fellowships</div>
+        <div class="funding-org">Marie Sk&#x142;odowska-Curie Actions &middot; 2026 call</div>
+        <div class="funding-desc">European (EF) and Global (GF) fellowships for incoming postdoctoral researchers. 2026 call now open. We actively support proposal development. <a href="https://www.unl.pt/en/the-marie-sklodowska-curie-postdoctoral-fellowships/" target="_blank" style="color:var(--nms-black);font-weight:600;">Learn more &rarr;</a></div>
+      </div>
+      <div class="funding-card reveal">
+        <div class="funding-icon">&#x1F4CB;</div>
+        <div class="funding-name">FCT Individual Grants</div>
+        <div class="funding-org">DL57 / CEEC &middot; Funda&ccedil;&atilde;o para a Ci&ecirc;ncia e Tecnologia</div>
+        <div class="funding-desc">The Individual Call is aimed at PhD holders of any nationality or stateless with a background in any scientific area who wish to develop their scientific research or technological development activity in Portugal. The next call is expected to open in March/April 2027. <a href="https://www.fct.pt/en/concursos/concurso-estimulo-ao-emprego-cientifico-individual-8-edicao" target="_blank" style="color:var(--nms-black);font-weight:600;">Learn more &rarr;</a></div>
+      </div>
+      <div class="funding-card reveal">
+        <div class="funding-icon">&#x1F310;</div>
+        <div class="funding-name">Other Opportunities</div>
+        <div class="funding-org">European &amp; International Calls</div>
+        <div class="funding-desc">We monitor European and international funding calls continuously and advise candidates on fit and timing. We will announce other interesting calls here as they open. If you have a strong profile, we will find the right programme together.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPLY -->
+<section id="apply">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">How to Apply</div>
+      <h2 class="section-title">Express your interest</h2>
+      <p class="section-body">Complete the form corresponding to your level. Shortlisted candidates will be invited for a conversation to discuss research alignment and proposal strategy.</p>
+    </div>
+
+    <div class="apply-grid reveal">
+      <div class="apply-card phd">
+        <div class="apply-card-label">PhD Application</div>
+        <div class="apply-card-title">7 open research streams</div>
+        <div class="apply-card-count">FCT PhD Grants &middot; Google PhD Fellowship &middot; and others</div>
+        <a href="https://jmm1972.github.io/dsai-lab-health/apply-phd.html" target="_blank" class="btn btn-white">Apply as PhD student &rarr;</a>
+      </div>
+      <div class="apply-card pd">
+        <div class="apply-card-label">Postdoctoral Application</div>
+        <div class="apply-card-title">7 open research streams</div>
+        <div class="apply-card-count">MSCA-PF 2026 &middot; FCT DL57 &middot; and others</div>
+        <a href="https://jmm1972.github.io/dsai-lab-health/apply-postdoc.html" target="_blank" class="btn btn-white">Apply as Postdoctoral researcher &rarr;</a>
+      </div>
+    </div>
+
+    <div class="apply-steps reveal">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-text"><strong>Submit the form</strong>Tell us about your background, interests, and funding target. Takes 15&ndash;20 minutes.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-text"><strong>Initial conversation</strong>Shortlisted candidates are invited for a 30-minute call with the PI within 3 weeks.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-text"><strong>Proposal development</strong>Selected candidates develop a competitive proposal with active mentorship from the lab.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-text"><strong>Submission &amp; start</strong>We submit together to the target funding programme. Expected start: late 2026 or early 2027.</div>
+      </div>
+    </div>
+
+    <div class="deadline-banner reveal">
+      <span class="dl-icon">&#x1F4C5;</span>
+      <div>
+        <strong>Application deadline: 15 July 2026</strong><br>
+        <span style="font-weight:400; font-size:13px;">Applications received after this date may not be considered for the 2026 cohort. Questions: <a href="mailto:jorge.mendes@nms.unl.pt" style="color:#7b4f00;">jorge.mendes@nms.unl.pt</a></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-name">DSAI Hub for Health</div>
+      <div class="footer-inst">NOVA Medical School &middot; NOVA University Lisbon &middot; Lisbon, Portugal</div>
+      <div class="footer-copy">Principal Investigators: Jorge M. Mendes (jorge.mendes@nms.unl.pt) &middot; S&eacute;rgio Laranjo (sergio.laranjo@nms.unl.pt)</div>
+    </div>
+    <div class="footer-links">
+      <a href="https://orcid.org/0000-0003-2251-3803" target="_blank">ORCID</a>
+      <a href="https://scholar.google.pt/citations?user=qQfK5cEAAAAJ" target="_blank">Google Scholar</a>
+      <a href="https://novaresearch.unl.pt/en/persons/jorge-morais-mendes" target="_blank">NOVA Research</a>
+      <a href="https://www.nms.unl.pt" target="_blank">NOVA Medical School</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function showStreams(level, btn) {
+  document.querySelectorAll('.stream-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.stab').forEach(b => b.classList.remove('active'));
+  document.getElementById('panel-' + level).classList.add('active');
+  btn.classList.add('active');
+}
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 60);
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+function toggleStream(card) {
+  const isOpen = card.classList.contains('open');
+  card.classList.toggle('open', !isOpen);
+  card.setAttribute('aria-expanded', String(!isOpen));
+  if (!isOpen) {
+    setTimeout(() => {
+      const rect = card.getBoundingClientRect();
+      if (rect.bottom > window.innerHeight) {
+        card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    }, 300);
+  }
+}
+
+document.addEventListener('keydown', function(e) {
+  if ((e.key === 'Enter' || e.key === ' ') && e.target.classList.contains('stream-card')) {
+    e.preventDefault();
+    toggleStream(e.target);
+  }
+});
+</script>
+</body>
+</html>

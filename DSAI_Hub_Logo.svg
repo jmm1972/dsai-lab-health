@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  DSAI Hub for Health — Logótipo Oficial
+  =======================================
+  NOVA Medical School · NOVA University Lisbon
+  Principal Investigators: Jorge M. Mendes & Sérgio Laranjo
+
+  Cores institucionais — Manual de Identidade NMS (Fev. 2021):
+    Amarelo  · Pantone 7549  · #FAB500 · RGB 250, 181, 0
+    Preto    · Pantone Black C · #2D2A26 · RGB 45, 41, 38
+
+  Este ficheiro contém 5 variantes:
+    1. Logo horizontal completo — fundo branco/transparente  (uso principal)
+    2. Logo horizontal completo — fundo preto NMS
+    3. Logo horizontal completo — fundo amarelo NMS
+    4. Ícone standalone — quadrado (website, app, favicon)
+    5. Logo compacto — cabeçalho de documentos
+
+  Uso:
+    - Importar directamente em Illustrator, Figma, Inkscape
+    - Usar como <img src="DSAI_Lab_Logo.svg"> em HTML
+    - Converter para PNG com qualquer editor vectorial
+    - Para favicon: exportar variante 4 como PNG 32×32, 64×64, 180×180
+-->
+<svg
+  version="1.1"
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 760 900"
+  width="760"
+  height="900"
+  role="img"
+  aria-label="DSAI Hub for Health — logótipo completo com todas as variantes"
+>
+  <title>DSAI Hub for Health — Logótipo NOVA Medical School</title>
+  <desc>Logótipo oficial do DSAI Hub for Health (Data Science and Artificial Intelligence Hub for Health), NOVA Medical School, NOVA University Lisbon. Todas as variantes: fundo branco, fundo preto, fundo amarelo, ícone standalone, e versão compacta para documentos.</desc>
+
+  <defs>
+    <!-- Clip para a forma D — variante branco/transparente -->
+    <clipPath id="clip-A">
+      <path d="M20,20 L20,140 L80,140 Q170,140 170,80 Q170,20 80,20 Z"/>
+    </clipPath>
+    <!-- Clip para a forma D — variante fundo preto -->
+    <clipPath id="clip-B">
+      <path d="M20,280 L20,400 L80,400 Q170,400 170,340 Q170,280 80,280 Z"/>
+    </clipPath>
+    <!-- Clip para a forma D — variante fundo amarelo -->
+    <clipPath id="clip-C">
+      <path d="M20,440 L20,560 L80,560 Q170,560 170,500 Q170,440 80,440 Z"/>
+    </clipPath>
+    <!-- Clip para ícone standalone -->
+    <clipPath id="clip-D">
+      <path d="M10,610 L10,750 L76,750 Q160,750 160,680 Q160,610 76,610 Z"/>
+    </clipPath>
+    <!-- Clip para versão compacta -->
+    <clipPath id="clip-E">
+      <path d="M20,810 L20,890 L52,890 Q102,890 102,850 Q102,810 52,810 Z"/>
+    </clipPath>
+  </defs>
+
+  <!-- ═══════════════════════════════════════════════════════
+       RÓTULOS DE VARIANTE
+  ═══════════════════════════════════════════════════════ -->
+  <text x="20" y="12" font-family="system-ui, sans-serif" font-size="10" fill="#888" letter-spacing="1">VARIANTE 1 — Fundo branco / transparente (uso principal)</text>
+  <text x="20" y="272" font-family="system-ui, sans-serif" font-size="10" fill="#888" letter-spacing="1">VARIANTE 2 — Fundo preto NMS</text>
+  <text x="20" y="432" font-family="system-ui, sans-serif" font-size="10" fill="#888" letter-spacing="1">VARIANTE 3 — Fundo amarelo NMS</text>
+  <text x="20" y="602" font-family="system-ui, sans-serif" font-size="10" fill="#888" letter-spacing="1">VARIANTE 4 — Ícone standalone</text>
+  <text x="20" y="802" font-family="system-ui, sans-serif" font-size="10" fill="#888" letter-spacing="1">VARIANTE 5 — Versão compacta (cabeçalho de documentos)</text>
+
+  <!-- ═══════════════════════════════════════════════════════
+       VARIANTE 1 — Fundo branco / transparente
+  ═══════════════════════════════════════════════════════ -->
+  <!-- Letra D — exterior preto -->
+  <path d="M20,20 L20,140 L80,140 Q170,140 170,80 Q170,20 80,20 Z" fill="#2D2A26"/>
+  <!-- Letra D — interior branco -->
+  <path d="M42,42 L42,118 L80,118 Q144,118 144,80 Q144,42 80,42 Z" fill="#FFFFFF"/>
+  <!-- Hexágono amarelo (dentro da área branca, clipado pelo D) -->
+  <polygon
+    points="85,47 117,47 133,74 117,101 85,101 69,74"
+    fill="#FAB500"
+    clip-path="url(#clip-A)"
+  />
+  <!-- Contorno hexágono branco -->
+  <polygon
+    points="85,47 117,47 133,74 117,101 85,101 69,74"
+    fill="none"
+    stroke="#FFFFFF"
+    stroke-width="2.5"
+    clip-path="url(#clip-A)"
+  />
+  <!-- Linha de ECG / pulso -->
+  <polyline
+    points="70,74 80,74 86,54 93,94 99,62 106,74 118,74 134,74"
+    fill="none"
+    stroke="#2D2A26"
+    stroke-width="4.5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    clip-path="url(#clip-A)"
+  />
+  <!-- Wordmark DSAI -->
+  <text x="190" y="74" font-family="'DM Sans', 'Helvetica Neue', Arial, sans-serif" font-size="62" font-weight="700" fill="#2D2A26" letter-spacing="-2">DSAI</text>
+  <!-- Subtítulo HUB FOR HEALTH -->
+  <text x="193" y="108" font-family="'DM Sans', 'Helvetica Neue', Arial, sans-serif" font-size="24" font-weight="400" fill="#FAB500" letter-spacing="6">HUB FOR HEALTH</text>
+  <!-- Linha separadora -->
+  <line x1="193" y1="118" x2="620" y2="118" stroke="#FAB500" stroke-width="1.5" opacity="0.5"/>
+  <!-- Afiliação -->
+  <text x="193" y="138" font-family="'DM Sans', 'Helvetica Neue', Arial, sans-serif" font-size="18" font-weight="400" fill="#888780" letter-spacing="0.5">NOVA Medical School · NOVA University Lisbon</text>
+
+  <!-- ═══════════════════════════════════════════════════════
+       VARIANTE 2 — Fundo preto NMS
+  ═══════════════════════════════════════════════════════ -->
+  <!-- Fundo -->
+  <rect x="0" y="280" width="740" height="140" fill="#2D2A26" rx="8"/>
+  <!-- Letra D — exterior amarelo -->
+  <path d="M20,280 L20,400 L80,400 Q170,400 170,340 Q170,280 80,280 Z" fill="#FAB500"/>
+  <!-- Letra D — interior preto -->
+  <path d="M42,302 L42,378 L80,378 Q144,378 144,340 Q144,302 80,302 Z" fill="#2D2A26"/>
+  <!-- Hexágono amarelo clipado -->
+  <polygon
+    points="85,307 117,307 133,334 117,361 85,361 69,334"
+    fill="#FAB500"
+    clip-path="url(#clip-B)"
+  />
+  <polygon
+    points="85,307 117,307 133,334 117,361 85,361 69,334"
+    fill="none"
+    stroke="#2D2A26"
+    stroke-width="2.5"
+    clip-path="url(#clip-B)"
+  />
+  <!-- Linha ECG em preto sobre hex amarelo -->
+  <polyline
+    points="70,334 80,334 86,314 93,354 99,322 106,334 118,334 134,334"
+    fill="none"
+    stroke="#2D2A26"
+    stroke-width="4.5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    clip-path="url(#clip-B)"
+  />
+  <!-- Wordmark branco -->
+  <text x="190" y="334" font-family="'DM Sans', 'Helvetica Neue', Arial, sans-serif" font-size="62" font-weight="700" fill="#FFFFFF" letter-spacing="-2">DSAI</text>
+  <text x="193" y="368" font-family="'DM Sans', 'Helvetica Neue', Arial, sans-serif" font-size="24" font-weight="400" fill="#FAB500" letter-spacing="6">HUB FOR HEALTH</text>
+  <line x1="193" y1="378" x2="620" y2="378" stroke="#FAB500" stroke-width="1.5" opacity="0.4"/>
+  <text x="193" y="395" font-family="'DM Sans', 'Helvetica Neue', Arial, sans-serif" font-size="18" font-weight="400" fill="#888780" letter-spacing="0.5">NOVA Medical School · NOVA University Lisbon</text>
+
+  <!-- ═══════════════════════════════════════════════════════
+       VARIANTE 3 — Fundo amarelo NMS
+  ═══════════════════════════════════════════════════════ -->
+  <rect x="0" y="440" width="740" height="140" fill="#FAB500" rx="8"/>
+  <!-- Letra D — exterior preto -->
+  <path d="M20,440 L20,560 L80,560 Q170,560 170,500 Q170,440 80,440 Z" fill="#2D2A26"/>
+  <!-- Interior amarelo -->
+  <path d="M42,462 L42,538 L80,538 Q144,538 144,500 Q144,462 80,462 Z" fill="#FAB500"/>
+  <!-- Hexágono preto -->
+  <polygon
+    points="85,467 117,467 133,494 117,521 85,521 69,494"
+    fill="#2D2A26"
+    clip-path="url(#clip-C)"
+  />
+  <polygon
+    points="85,467 117,467 133,494 117,521 85,521 69,494"
+    fill="none"
+    stroke="#FAB500"
+    stroke-width="2.5"
+    clip-path="url(#clip-C)"
+  />
+  <!-- Linha ECG amarela -->
+  <polyline
+    points="70,494 80,494 86,474 93,514 99,482 106,494 118,494 134,494"
+    fill="none"
+    stroke="#FAB500"
+    stroke-width="4.5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    clip-path="url(#clip-C)"
+  />
+  <!-- Wordmark preto -->
+  <text x="190" y="494" font-family="'DM Sans', 'Helvetica Neue', Arial, sans-serif" font-size="62" font-weight="700" fill="#2D2A26" letter-spacing="-2">DSAI</text>
+  <text x="193" y="528" font-family="'DM Sans', 'Helvetica Neue', Arial, sans-serif" font-size="24" font-weight="400" fill="#2D2A26" letter-spacing="6">HUB FOR HEALTH</text>
+  <line x1="193" y1="538" x2="620" y2="538" stroke="#2D2A26" stroke-width="1.5" opacity="0.35"/>
+  <text x="193" y="555" font-family="'DM Sans', 'Helvetica Neue', Arial, sans-serif" font-size="18" font-weight="400" fill="#5A5450" letter-spacing="0.5">NOVA Medical School · NOVA University Lisbon</text>
+
+  <!-- ═══════════════════════════════════════════════════════
+       VARIANTE 4 — Ícone standalone (quadrado 160×160)
+  ═══════════════════════════════════════════════════════ -->
+  <!-- Fundo claro para visualização -->
+  <rect x="20" y="620" width="160" height="160" fill="#F4F4F2" rx="16"/>
+  <!-- Letra D — exterior preto -->
+  <path d="M30,630 L30,770 L90,770 Q170,770 170,700 Q170,630 90,630 Z" fill="#2D2A26"/>
+  <!-- Interior branco -->
+  <path d="M52,652 L52,748 L90,748 Q146,748 146,700 Q146,652 90,652 Z" fill="#FFFFFF"/>
+  <!-- Hexágono amarelo clipado -->
+  <polygon
+    points="94,658 128,658 145,685 128,712 94,712 77,685"
+    fill="#FAB500"
+    clip-path="url(#clip-D)"
+  />
+  <polygon
+    points="94,658 128,658 145,685 128,712 94,712 77,685"
+    fill="none"
+    stroke="#FFFFFF"
+    stroke-width="2.8"
+    clip-path="url(#clip-D)"
+  />
+  <!-- Linha ECG -->
+  <polyline
+    points="78,685 88,685 95,663 102,707 109,671 116,685 128,685 145,685"
+    fill="none"
+    stroke="#2D2A26"
+    stroke-width="5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    clip-path="url(#clip-D)"
+  />
+  <!-- Label tamanhos sugeridos -->
+  <text x="196" y="648" font-family="system-ui, sans-serif" font-size="13" fill="#2D2A26" font-weight="600">Tamanhos recomendados:</text>
+  <text x="196" y="668" font-family="system-ui, sans-serif" font-size="12" fill="#5F5E5A">• 512×512 px — App Store / Play Store</text>
+  <text x="196" y="686" font-family="system-ui, sans-serif" font-size="12" fill="#5F5E5A">• 180×180 px — Apple Touch Icon</text>
+  <text x="196" y="704" font-family="system-ui, sans-serif" font-size="12" fill="#5F5E5A">• 192×192 px — Android / PWA</text>
+  <text x="196" y="722" font-family="system-ui, sans-serif" font-size="12" fill="#5F5E5A">• 64×64 px — Favicon padrão</text>
+  <text x="196" y="740" font-family="system-ui, sans-serif" font-size="12" fill="#5F5E5A">• 32×32 px — Favicon browser tab</text>
+  <text x="196" y="762" font-family="system-ui, sans-serif" font-size="12" fill="#FAB500" font-weight="600">Exportar em PNG com fundo transparente</text>
+  <text x="196" y="778" font-family="system-ui, sans-serif" font-size="12" fill="#5F5E5A">ou com fundo amarelo #FAB500</text>
+
+  <!-- ═══════════════════════════════════════════════════════
+       VARIANTE 5 — Versão compacta (cabeçalho documentos)
+  ═══════════════════════════════════════════════════════ -->
+  <!-- Letra D pequena -->
+  <path d="M20,810 L20,890 L52,890 Q102,890 102,850 Q102,810 52,810 Z" fill="#2D2A26"/>
+  <path d="M32,822 L32,878 L52,878 Q88,878 88,850 Q88,822 52,822 Z" fill="#FFFFFF"/>
+  <!-- Hexágono pequeno -->
+  <polygon
+    points="53,825 69,825 77,838 69,851 53,851 45,838"
+    fill="#FAB500"
+    clip-path="url(#clip-E)"
+  />
+  <polygon
+    points="53,825 69,825 77,838 69,851 53,851 45,838"
+    fill="none"
+    stroke="#FFFFFF"
+    stroke-width="1.2"
+    clip-path="url(#clip-E)"
+  />
+  <!-- ECG pequeno -->
+  <polyline
+    points="45,838 51,838 54,828 57,848 60,834 63,838 70,838 77,838"
+    fill="none"
+    stroke="#2D2A26"
+    stroke-width="2.2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    clip-path="url(#clip-E)"
+  />
+  <!-- Separador vertical -->
+  <line x1="120" y1="818" x2="120" y2="882" stroke="#D3D1C7" stroke-width="1"/>
+  <!-- Wordmark compacto -->
+  <text x="134" y="843" font-family="'DM Sans', 'Helvetica Neue', Arial, sans-serif" font-size="28" font-weight="700" fill="#2D2A26" letter-spacing="-0.5">DSAI</text>
+  <text x="136" y="863" font-family="'DM Sans', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="400" fill="#FAB500" letter-spacing="3.5">HUB FOR HEALTH</text>
+  <!-- Separador vertical 2 -->
+  <line x1="286" y1="818" x2="286" y2="882" stroke="#D3D1C7" stroke-width="1"/>
+  <!-- Afiliação compacta -->
+  <text x="300" y="843" font-family="'DM Sans', 'Helvetica Neue', Arial, sans-serif" font-size="15" font-weight="400" fill="#2D2A26" letter-spacing="0.2">NOVA Medical School</text>
+  <text x="300" y="863" font-family="'DM Sans', 'Helvetica Neue', Arial, sans-serif" font-size="13" font-weight="400" fill="#888780" letter-spacing="0.1">NOVA University Lisbon</text>
+
+</svg>
